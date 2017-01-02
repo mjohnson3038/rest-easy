@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
-  root 'receipt#new'
+  root 'receipts#index'
 
-  get 'receipt/new', to: 'receipt#new'
-
-  get 'receipt/show', to: 'receipt/#show'
+  resources :receipts, only: [:index, :new, :create, :destroy]
 
 end

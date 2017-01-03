@@ -15,11 +15,17 @@ class ReceiptsControllerTest < ActionController::TestCase
 
   # receipt#create
   test "whether the page redirects when a new receipt image is uploaded" do
-
+    post_params = { receipt: {name: "tester"}, attachment: "IMG_4503.JPG"}
+    assert_difference('Receipt.count', 1) do
+      post :create, post_params
+    end
+    assert_redirected_to receipts_path
   end
 
   test "flash message when file is not of image type" do
-
+    post_params = { receipt: {name: "tester"}, attachment: "IMG_4503.PDF"}
+    post :create, post_params
+    assert_response :error
   end
 
   # receipt#show

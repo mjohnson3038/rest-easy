@@ -7,3 +7,7 @@ one:
 two:
   name: MyString
   attachment: MyString
+
+three:
+  name: TestID
+  attachment: IMG_0233.JPG

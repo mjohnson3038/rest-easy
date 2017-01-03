@@ -58,6 +58,9 @@ end
 group :test do
   gem 'minitest-reporters'
   gem 'simplecov'
+
+  # TO be used with the testing of the controller, it has been extracted to a gem (this gem). 
+  gem 'rails-controller-testing'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

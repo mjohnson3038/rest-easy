@@ -18,7 +18,8 @@
   <tbody>
     <% @receipts.each do |receipt| %>
       <tr>
-        <td><%= receipt.name %></td>
+
+        <td><%= link_to receipt.name, receipt_path(receipt.id) %></td>
         <td><%= link_to "Download Receipt", receipt.attachment_url %></td>
         <td><%= button_to "Delete",  receipt, method: :delete, class: "btn btn-danger", confirm: "Are you sure that you wish to delete #{receipt.name}?" %></td>
       </tr>

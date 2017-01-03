@@ -8,6 +8,10 @@ class ReceiptsController < ApplicationController
     @receipt = Receipt.new
   end
 
+  def show
+    @receipt = Receipt.find(params[:id])
+  end
+
   def create
     @receipt = Receipt.new(receipt_params)
 

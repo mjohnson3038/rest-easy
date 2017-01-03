@@ -35,8 +35,11 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-# To be used to upload a photo onto the site. 
+# To be used to upload a photo onto the site.
 gem 'carrierwave', '~> 0.9'
+
+# Useful in helping to resize images in Rails
+gem 'mini_magick', '~> 4.3'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

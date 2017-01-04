@@ -12,11 +12,10 @@ class ReceiptsController < ApplicationController
   def show
     @receipt = Receipt.find(params[:id])
 
-    image_attachment = @receipt.attachment.to_s
+    file = @receipt.attachment.file.file
 
-    image = RTesseract.new(image_attachment)
-
-    @image_text = image.to_s
+    image = RTesseract.new(file)
+    @text = image.to_s
 
   end
 

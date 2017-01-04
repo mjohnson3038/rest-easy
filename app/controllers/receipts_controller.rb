@@ -1,3 +1,4 @@
+require 'rtesseract'
 
 class ReceiptsController < ApplicationController
   def index
@@ -10,6 +11,13 @@ class ReceiptsController < ApplicationController
 
   def show
     @receipt = Receipt.find(params[:id])
+
+    image_attachment = @receipt.attachment.to_s
+
+    image = RTesseract.new(image_attachment)
+
+    @image_text = image.to_s
+
   end
 
   def create

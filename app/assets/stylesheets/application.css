@@ -5,6 +5,11 @@
 @import url('https://fonts.googleapis.com/css?family=Athiti');
 
 
+.logo {
+  font-family: 'Caveat';
+  text-align: center;
+}
+
 body {
   font-family: 'Athiti';
 }

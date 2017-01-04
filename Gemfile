@@ -41,9 +41,24 @@ gem 'carrierwave', '~> 0.9'
 # Useful in helping to resize images in Rails
 gem 'mini_magick', '~> 4.3'
 
+# API GEMS
+gem 'httparty'
+
+gem 'foundation-rails'
+
+# to turn image to text
+gem 'rtesseract'
+gem 'rmagick', '2.15.4'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
+  gem 'dotenv-rails'
+  gem 'better_errors'
+
+  # VCR
+  gem 'minitest-vcr'
+  gem 'webmock'
 end
 
 group :development do
@@ -53,13 +68,14 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'dotenv-rails'
 end
 
 group :test do
   gem 'minitest-reporters'
   gem 'simplecov'
 
-  # TO be used with the testing of the controller, it has been extracted to a gem (this gem). 
+  # TO be used with the testing of the controller, it has been extracted to a gem (this gem).
   gem 'rails-controller-testing'
 end
 

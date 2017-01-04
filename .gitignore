@@ -18,6 +18,8 @@
 !/tmp/.keep
 
 /coverage
+.env
+/test/cassettes
 
 # Ignore Byebug command history file.
 .byebug_history

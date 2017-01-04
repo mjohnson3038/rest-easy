@@ -10,7 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170102215840) do
+ActiveRecord::Schema.define(version: 20170104190045) do
+
+  create_table "guests", force: :cascade do |t|
+    t.string   "name"
+    t.string   "phone"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "list_items", force: :cascade do |t|
+    t.integer  "receipt_id"
+    t.integer  "guest_id"
+    t.string   "description"
+    t.integer  "price"
+    t.integer  "portion"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["guest_id"], name: "index_list_items_on_guest_id"
+    t.index ["receipt_id"], name: "index_list_items_on_receipt_id"
+  end
 
   create_table "receipts", force: :cascade do |t|
     t.string   "name"

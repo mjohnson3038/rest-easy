@@ -9,8 +9,15 @@
 <header>
   <h1 class = "logo">Rest Easy</h1>
   <h5 class = "logo">while we split your receipt for you</h5>
+
+  <% if session[:user_id] == nil %>
+    <%= link_to "Log In/Sign Up", "/auth/google" %>
+  <% else %>
+    <%= link_to "Log Out", sessions_path, method: :delete %>
+  <% end %>
 </header>
 <body>
+
   <div class="container" style="padding-top:20px;">
     <%= yield %>
   </div>

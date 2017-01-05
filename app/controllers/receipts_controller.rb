@@ -41,12 +41,14 @@ class ReceiptsController < ApplicationController
   def create
     # Calls user method in the application_controller
     user
-
     @current_user = User.find(@user.id)
 
     @receipt = @current_user.receipts.new(receipt_params)
 
     if @receipt.save
+
+      # Once the receipt has been saved/registered then it should automatically also create all the list items associated with the receipt. 
+
       redirect_to receipts_path, notice: "The receipt has been uploaded"
     else
       render "new"
@@ -60,7 +62,7 @@ class ReceiptsController < ApplicationController
     else
       @receipt = Receipt.find(params[:id])
       @receipt.destroy
-      redirect_to receipts_path, notice:  "The receipt #{@receipt.name} has been deleted."
+      redirect_to receipts_path
     end
   end
 
@@ -75,7 +77,7 @@ private
       redirect_to root_path
     elsif @user != Receipt.find(params[:id]).user_id
       flash[:notice] = "This is not your receipt, you can't delete it"
-      redirect to root_path
+      redirect_to root_path
     end
   end
 end

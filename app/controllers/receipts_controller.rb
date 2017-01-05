@@ -16,8 +16,10 @@ class ReceiptsController < ApplicationController
     file = @receipt.attachment.file.file
 
     image = RTesseract.new(file)
+
     @text = image.to_s
 
+    @split = @text.split("\n")
   end
 
   def create

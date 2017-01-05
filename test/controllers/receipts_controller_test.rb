@@ -22,19 +22,15 @@ class ReceiptsControllerTest < ActionController::TestCase
     assert_redirected_to receipts_path
   end
 
-  test "flash message when file is not of image type" do
-    post_params = { receipt: {name: "tester"}, attachment: "IMG_4503.PDF"}
-    post :create, post_params
-    assert_response :error
-  end
+  # flash message as part of the gem and AttachmentUploader
 
   # receipt#show
-  test "should get show" do
-    # recall how to select the yml and take the id from that yml
-    get :show, {id: receipts(:three).id}
-    assert_response :success
-    assert_template :show
-
-    assert_equal assigns(:receipt), receipts(:three)
-  end
+  # test "should get show" do
+  #   # recall how to select the yml and take the id from that yml
+  #   get :show, {id: receipts(:three).id}
+  #   assert_response :success
+  #   assert_template :show
+  #
+  #   assert_equal assigns(:receipt), receipts(:three)
+  # end
 end

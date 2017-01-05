@@ -4,6 +4,12 @@
 
 <p>SHOW IMAGE TEXT!!! <%= @text %></p>
 
-<p>SHOW IMAGE TEXT SPLIT!!! <%= @split %></p>
+<p>SHOW IMAGE TEXT SPLIT!!!</p>
+
+<% @split.each do |line| %>
+  <p><%= line %></p>
+<% end %>
+
+
 
 <p>Sales TAx!!! <%= @tax %></p>

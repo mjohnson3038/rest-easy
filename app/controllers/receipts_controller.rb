@@ -14,7 +14,7 @@ class ReceiptsController < ApplicationController
     if @user == nil
       redirect_to login_failure_path
     else
-      @receipt = Receipt.new(user_id: @user)
+      @receipt = Receipt.new
     end
   end
 
@@ -39,7 +39,12 @@ class ReceiptsController < ApplicationController
   end
 
   def create
-    @receipt = Receipt.new(receipt_params)
+    # Calls user method in the application_controller
+    user
+
+    @current_user = User.find(@user.id)
+
+    @receipt = @current_user.receipts.new(receipt_params)
 
     if @receipt.save
       redirect_to receipts_path, notice: "The receipt has been uploaded"

@@ -25,16 +25,16 @@ class ReceiptsController < ApplicationController
       puts ">>>>>>>>>>>>>>" + @user.id.to_s
       redirect_to root_path, notice: "You are not logged in as the owner of this receipt"
     elsif @user.id == Receipt.find(params[:id]).user_id
-      puts ">>>>>>>>>>>>>>" + @user.id.to_s
+      # puts ">>>>>>>>>>>>>>" + @user.id.to_s
       @receipt = Receipt.find(params[:id])
-
-      file = @receipt.attachment.file.file
-
-      image = RTesseract.new(file)
-
-      @text = image.to_s
-
-      @split = @text.split("\n")
+      #
+      # file = @receipt.attachment.file.file
+      #
+      # image = RTesseract.new(file)
+      #
+      # @text = image.to_s
+      #
+      # @split = @text.split("\n")
     end
   end
 

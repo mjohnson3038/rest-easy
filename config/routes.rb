@@ -9,8 +9,4 @@ Rails.application.routes.draw do
 
   resources :receipts, only: [:index, :new, :show, :create, :destroy]
 
-
-# QUESTION- DOES THIS MAKE SENSE?
-  get "/receipts/:id/process", to: "list_items#process", as: "process_list_items"
-
 end

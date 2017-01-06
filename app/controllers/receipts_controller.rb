@@ -48,6 +48,14 @@ class ReceiptsController < ApplicationController
     if @receipt.save
 
       # Once the receipt has been saved/registered then it should automatically also create all the list items associated with the receipt.
+      @receipt.process()
+      # file = @receipt.attachment.file.file
+      #
+      # text = RTesseract.new(file).to_s
+      # text.split("\n").each do |line|
+      #   @receipt.list_items.create!(name: line)
+      # end
+
 
       redirect_to receipts_path, notice: "The receipt has been uploaded"
     else

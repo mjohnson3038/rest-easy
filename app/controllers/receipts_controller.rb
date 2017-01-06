@@ -27,14 +27,17 @@ class ReceiptsController < ApplicationController
     elsif @user.id == Receipt.find(params[:id]).user_id
       # puts ">>>>>>>>>>>>>>" + @user.id.to_s
       @receipt = Receipt.find(params[:id])
+
+      # @list_items = ListItem.find_by(receipt_id = params[:id])
+
       #
-      # file = @receipt.attachment.file.file
-      #
-      # image = RTesseract.new(file)
-      #
-      # @text = image.to_s
-      #
-      # @split = @text.split("\n")
+      file = @receipt.attachment.file.file
+
+      image = RTesseract.new(file)
+
+      @text = image.to_s
+
+      @split = @text.split("\n")
     end
   end
 
@@ -64,10 +67,13 @@ class ReceiptsController < ApplicationController
   end
 
   def destroy
-    check_user
-    if @user == nil
-      redirect_to login_failure_path
-    else
+    if @user.id == nil
+      flash[:notice] = "You need to log in to edit this."
+      redirect_to root_path
+    elsif @user.id != Receipt.find(params[:id]).user_id
+      flash[:notice] = "This is not your receipt, you can't delete it"
+      redirect_to root_path
+    elsif @user.id == Receipt.find(params[:id]).user_id
       @receipt = Receipt.find(params[:id])
       @receipt.destroy
       redirect_to receipts_path
@@ -80,12 +86,6 @@ private
   end
 
   def check_user
-    if @user == nil
-      flash[:notice] = "You need to log in to edit this."
-      redirect_to root_path
-    elsif @user != Receipt.find(params[:id]).user_id
-      flash[:notice] = "This is not your receipt, you can't delete it"
-      redirect_to root_path
-    end
+
   end
 end

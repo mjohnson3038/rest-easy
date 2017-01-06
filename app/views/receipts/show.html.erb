@@ -1,3 +1,9 @@
 <h1>You are displaying the show page for <%= @receipt.id %></h1>
 
 <p>Show the image tag <%= @receipt.attachment %><p>
+
+
+<% @split.each do |line| %>
+  <p><%= line %><p>
+
+<% end %>

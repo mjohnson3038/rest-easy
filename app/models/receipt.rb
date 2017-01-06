@@ -33,6 +33,7 @@ class Receipt < ActiveRecord::Base
       # Last element, check to see if it is a float - need to remove the "$" before checking
 
       if examine_line.length !=0
+        puts "NEW LINE"
 
         # OCR often reads 1 as I => including that case to identify the quantity. Also when the item is not a number (ie a letter), when you turn it into a number, it become 0. Since a quantity will never be 0, or else it wouldn't be on the receipt => so long as it is >0, it is a number and we can peg this as the quantity.
 
@@ -42,6 +43,16 @@ class Receipt < ActiveRecord::Base
             puts "quantity >>>>>" + quantity.to_s
           else
             quantity = examine_line.first.to_i
+            puts "quantity >>>>>" + quantity.to_s
+          end
+        end
+
+        if examine_line[-2] == "I" || examine_line[-2].to_i > 0
+          if examine_line[-2] == "I"
+            quantity = 1
+            puts "quantity >>>>>" + quantity.to_s
+          else
+            quantity = examine_line[-2].to_i
             puts "quantity >>>>>" + quantity.to_s
           end
         end

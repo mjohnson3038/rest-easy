@@ -47,7 +47,7 @@ class ReceiptsController < ApplicationController
 
     if @receipt.save
 
-      # Once the receipt has been saved/registered then it should automatically also create all the list items associated with the receipt. 
+      # Once the receipt has been saved/registered then it should automatically also create all the list items associated with the receipt.
 
       redirect_to receipts_path, notice: "The receipt has been uploaded"
     else

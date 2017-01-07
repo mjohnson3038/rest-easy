@@ -65,6 +65,8 @@ class Receipt < ActiveRecord::Base
         puts "name >>>>" + name.to_s
         puts "price >>>>" + price.to_s
 
+        self.list_items.create!({description: name, price: price, quantity: quantity, guest_id: nil})
+
       end
     end
   end
@@ -76,9 +78,5 @@ class Receipt < ActiveRecord::Base
   # end
 
   mount_uploader :attachment, AttachmentUploader # Tells rails to use this uploader for this model.
-
-
-
-
 
 end

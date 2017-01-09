@@ -13,7 +13,7 @@
       <td><%= i.quantity %></td>
       <td><%= i.description %></td>
       <td><%= i.price * 0.01 %></td>
-      <td>EDIT BOTTON COMING SOON</td>
+      <td><%= link_to "Edit", edit_list_item_path(i.id) %></td>
     </tr>
   <% end %>
 </table>

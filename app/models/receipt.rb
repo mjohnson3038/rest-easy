@@ -65,7 +65,7 @@ class Receipt < ActiveRecord::Base
         puts "name >>>>" + name.to_s
         puts "price >>>>" + price.to_s
 
-        self.list_items.create!({description: name, price: price, quantity: quantity, guest_id: nil})
+        self.list_items.create!({description: name, price: price, quantity: quantity})
 
       end
     end

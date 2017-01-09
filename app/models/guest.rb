@@ -1,3 +1,3 @@
 class Guest < ApplicationRecord
-  has_many :list_items
+  has_many :guest_items
 end

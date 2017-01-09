@@ -27,7 +27,7 @@ class Receipt < ActiveRecord::Base
 
 
         # To select the price in the line. NOTE Price is multiplied by 100 here, to save the digits, and then will be divided by 100 in the list_item view and whenever it is used on other models.
-        price = examine_line.last.gsub("$", "").to_f * 100
+        price = examine_line.last.gsub("$", "").to_f
 
         # To select the quantity
 

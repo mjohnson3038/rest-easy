@@ -1,3 +1,21 @@
-<h1>EDIT PAGE</h1>
 
-<p><%= @list_item.id %></p>
+<section>
+
+  <h1>EDIT PAGE</h1>
+
+  <p><%= @list_item.id %></p>
+
+  <%= form_for @list_item, :url => { method: :patch} do |f| %>
+    <%= f.label @quantity %>
+    <%= f.text_field @quantity %>
+
+    <%= f.label @description %>
+    <%= f.text_field @description %>
+
+    <%= f.label @price %>
+    <%= f.text_area @price %>
+
+    <%= f.submit "Submit" %>
+  <% end %>
+
+</section>

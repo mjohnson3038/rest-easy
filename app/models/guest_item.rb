@@ -1,0 +1,2 @@
+class GuestItem < ApplicationRecord
+end

@@ -26,8 +26,8 @@ class Receipt < ActiveRecord::Base
         # A line item will only be made if a price is present. The price is the only thing that needs to be present to create the item. A price is always the last thing in the line. It should also always be a float. Once the "$" symbol is removed it should always be a float. It is not a float if when you attempt to make it into a float it turns to 0. Additionally, this is convienient because items that are free on the receipt, do not need to be accounted for and do not need to be selected by a guest.
 
 
-        # To select the price in the line.
-        price = examine_line.last.gsub("$", "")
+        # To select the price in the line. NOTE Price is multiplied by 100 here, to save the digits, and then will be divided by 100 in the list_item view and whenever it is used on other models.
+        price = examine_line.last.gsub("$", "").to_f * 100
 
         # To select the quantity
 
@@ -64,6 +64,7 @@ class Receipt < ActiveRecord::Base
         puts "quantity >>>>" + quantity.to_s
         puts "name >>>>" + name.to_s
         puts "price >>>>" + price.to_s
+
 
         self.list_items.create!({description: name, price: price, quantity: quantity})
 

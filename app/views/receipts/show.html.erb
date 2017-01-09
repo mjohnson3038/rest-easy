@@ -1,9 +1,21 @@
 <h1>You are displaying the show page for <%= @receipt.id %></h1>
 
-<p>Show the image tag <%= @receipt.attachment %><p>
+<section>
+<table>
+  <tr>
+    <th>Quantity</th>
+    <th>Description</th>
+    <th>Price</th>
+    <th>Edit</th>
+  </tr>
+  <% @items_per_receipt.each do |i| %>
+    <tr>
+      <td><%= i.quantity %></td>
+      <td><%= i.description %></td>
+      <td><%= i.price * 0.01 %></td>
+      <td>EDIT BOTTON COMING SOON</td>
+    </tr>
+  <% end %>
+</table>
 
-
-<% @split.each do |line| %>
-  <p><%= line %><p>
-
-<% end %>
+</section>

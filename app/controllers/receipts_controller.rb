@@ -28,16 +28,8 @@ class ReceiptsController < ApplicationController
       # puts ">>>>>>>>>>>>>>" + @user.id.to_s
       @receipt = Receipt.find(params[:id])
 
-      # @list_items = ListItem.find_by(receipt_id = params[:id])
-
-      #
-      file = @receipt.attachment.file.file
-
-      image = RTesseract.new(file)
-
-      @text = image.to_s
-
-      @split = @text.split("\n")
+      # To display the associated list_items with the receipt instead of just the text from the receipt.
+      @items_per_receipt = ListItem.where(receipt_id: @receipt.id)
     end
   end
 
@@ -52,13 +44,6 @@ class ReceiptsController < ApplicationController
 
       # Once the receipt has been saved/registered then it should automatically also create all the list items associated with the receipt.
       @receipt.process()
-      # file = @receipt.attachment.file.file
-      #
-      # text = RTesseract.new(file).to_s
-      # text.split("\n").each do |line|
-      #   @receipt.list_items.create!(name: line)
-      # end
-
 
       redirect_to receipts_path, notice: "The receipt has been uploaded"
     else

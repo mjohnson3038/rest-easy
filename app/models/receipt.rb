@@ -5,6 +5,7 @@ require 'rTesseract'
 class Receipt < ActiveRecord::Base
   belongs_to :user
   has_many :list_items
+  has_many :guests
 
   validates :user, :presence => true
 

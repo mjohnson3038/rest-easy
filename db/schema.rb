@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170109201324) do
+ActiveRecord::Schema.define(version: 20170110235302) do
 
   create_table "guest_items", force: :cascade do |t|
     t.integer  "list_item_id"
@@ -28,6 +28,8 @@ ActiveRecord::Schema.define(version: 20170109201324) do
     t.string   "phone"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "receipt_id"
+    t.index ["receipt_id"], name: "index_guests_on_receipt_id"
   end
 
   create_table "list_items", force: :cascade do |t|

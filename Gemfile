@@ -55,10 +55,6 @@ gem 'omniauth'
 
 #google as our authentication
 gem "omniauth-google-oauth2", "~> 0.2.1"
-
-# For Font-Awesome icons
-gem 'font-awesome-less'
-
 # For Bootstrap
 gem 'bootstrap-sass', '~> 3.3.5.1'
 

@@ -5,7 +5,7 @@
 
   <p><%= @list_item.id %></p>
 
-  <%= form_for @list_item, :url => { method: :patch} do |f| %>
+  <%= form_for @list_item, :url => { method: :patch, action: :update } do |f| %>
     <%= f.label @quantity %>
     <%= f.text_field @quantity %>
 

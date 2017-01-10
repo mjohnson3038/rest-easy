@@ -57,9 +57,9 @@ class ListItemsController < ApplicationController
   end
 
   def destroy
-    receipt_id = ListItem.find(params[:id]).receipt_id
+    receipt_id = params[:receipt_id]
     @item = ListItem.find(params[:id]).destroy
-    redirect_to list_item_path(receipt_id)
+    redirect_to receipt_list_items_path(receipt_id)
   end
 
   private

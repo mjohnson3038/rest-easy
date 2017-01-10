@@ -1,6 +1,7 @@
 <article>
 
   <section>
+    <p>Receipt id: <%= params[:receipt_id] %></p>
     <h1>You are displaying the show page for <%= @receipt.zip_code %></h1>
   </section>
 
@@ -24,6 +25,7 @@
         <td><%= i.description %></td>
         <td><%= "%.2f" % i.price %></td>
         <td><%= link_to "Edit", edit_receipt_list_item_path(id:i.id) %></td>
+        <td><%= button_to "Delete",  receipt_list_item_path(id: i.id), method: :delete, class: "btn btn-danger"%></td>
         <td><%= i.id %></td>
 
       </tr>

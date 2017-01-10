@@ -2,17 +2,11 @@
 
   <section>
     <h1>You are displaying the show page for <%= @receipt.zip_code %></h1>
-
-    <p><%= button_to "Lets Begin Dividing", new_list_item_path %></p>
   </section>
 
   <section>
-    <p><%= link_to "New List Item", new_list_item_path, remote: true %></p>
-    <div id = "list_item_form" style = "display:none"></div>
-
-    <div class="row">
-      <div class="col-md-6 col-md-offset-2" id="list_item_form" style="display:none;"></div>
-    </div>
+    <p><%= link_to "New List Item", new_list_item_path(receipt_id: params[:id]) %></p>
+    <p><%= params[:id] %></p>
 
   </section>
 
@@ -30,7 +24,6 @@
         <td><%= i.description %></td>
         <td><%= "%.2f" % i.price %></td>
         <td><%= link_to "Edit", edit_list_item_path(i.id) %></td>
-        <td><%= link_to "Delete", delete_list_item_path(i.id) %></td>
       </tr>
     <% end %>
   </table>

@@ -12,11 +12,11 @@ Rails.application.routes.draw do
   resources :receipts, only: [:index, :new, :show, :create, :destroy]
 
   # ListItem
-  get '/list_items/new' => 'list_items#new'
-  post 'list_items/new' => 'list_items#create'
-  get '/list_items/:id/edit', to: 'list_items#edit', as: 'edit_list_item'
-  patch '/list_items/:id/edit' => 'list_items#update'
-  delete '/list_items/:id', to: 'list_items#destroy', as: 'delete_list_item'
+  # get '/list_items/new' => 'list_items#new'
+  # post 'list_items/' => 'list_items#create'
+  # get '/list_items/:id/edit', to: 'list_items#edit', as: 'edit_list_item'
+  # patch '/list_items/:id/edit' => 'list_items#update'
+  # delete '/list_items/:id', to: 'list_items#destroy'
   resources :list_items, only: [:new, :create, :edit, :update, :destroy]
 
 

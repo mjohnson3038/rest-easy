@@ -1,1 +1,18 @@
-<%= render 'form' %>
+<h1> Add an item to the receipt </h1>
+
+  <%= form_for @new_item, :url => { method: :post, action: :create } do |f| %>
+
+  <%= f.label @quantity %>
+  <%= f.text_field @quantity %>
+
+  <%= f.label @description %>
+  <%= f.text_field @description %>
+
+  <%= f.label @price %>
+  <%= f.text_area @price %>
+
+  <%= f.hidden_field :receipt_id, :value => params[:receipt_id] %>
+
+  <%= f.submit "Submit" %>
+
+<% end %>

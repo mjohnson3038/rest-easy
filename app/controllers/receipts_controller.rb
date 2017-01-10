@@ -1,7 +1,7 @@
 require 'rtesseract'
 
 class ReceiptsController < ApplicationController
-respond_to :html, :js
+# respond_to :html, :js
 
   def index
     if @user == nil

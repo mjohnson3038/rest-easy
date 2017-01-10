@@ -1,5 +1,4 @@
 class ListItemsController < ApplicationController
-  respond_to :html, :js
 
   def edit
     # ADD CHECKING FOR USER
@@ -24,6 +23,7 @@ class ListItemsController < ApplicationController
   end
 
   def new
+
     @new_item = ListItem.new
     @quantity = :quantity
     @description = :description

@@ -23,7 +23,6 @@ class ListItemsController < ApplicationController
   end
 
   def new
-
     @new_item = ListItem.new
     @quantity = :quantity
     @description = :description
@@ -31,9 +30,15 @@ class ListItemsController < ApplicationController
   end
 
   def create
+    puts ">>>>>>>>>>" + list_item_params.to_s
+    parameters[:list_item]
     @new_item = ListItem.new(list_item_params)
-    @new_item.save
-    redirect_to receipts_path
+    if @new_item.save
+      # QUESTION - should be redirecting back to the receipt page, but how can I grab hold of the receipt id?
+      redirect_to receipts_path
+    else
+      redirect_to root_path
+    end
   end
 
   def destroy
@@ -45,6 +50,6 @@ class ListItemsController < ApplicationController
   private
 
   def list_item_params
-    params.require(:list_item).permit(:quantity, :description, :price)
+    params.require(:list_item).permit(:quantity, :description, :price, :receipt_id)
   end
 end

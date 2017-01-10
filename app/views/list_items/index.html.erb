@@ -7,27 +7,30 @@
 
   <section>
     <p><%= link_to "New List Item", new_receipt_list_item_path(receipt_id: params[:receipt_id]) %></p>
-    <p><%= params[:id] %></p>
+    <p><%= link_to "Let's Get Splitting!", split_receipts_path(params[:receipt_id]) %></p>
 
   </section>
 
   <table>
     <tr>
+      <th></th>
       <th>Quantity</th>
       <th>Description</th>
       <th>Price</th>
-      <th>Edit</th>
-      <th>Delete</th>
+      <th></th>
     </tr>
     <% @items_per_receipt.each do |i| %>
       <tr>
-        <td><%= i.quantity %></td>
-        <td><%= i.description %></td>
-        <td><%= "%.2f" % i.price %></td>
-        <td><%= link_to "Edit", edit_receipt_list_item_path(id:i.id) %></td>
-        <td><%= button_to "Delete",  receipt_list_item_path(id: i.id), method: :delete, class: "btn btn-danger"%></td>
-        <td><%= i.id %></td>
-
+        <td>
+          <div><%= link_to '<i class="fa fa-pencil" aria-hidden="true"></i>'.html_safe, edit_receipt_list_item_path(id:i.id) %>
+        </td>
+        <div>
+          <td><%= i.quantity %></td>
+          <td><%= i.description %></td>
+          <td><%= "%.2f" % i.price %></td>
+        <td>
+          <div id="delete_button"><%= link_to '<i class="fa fa-trash" aria-hidden="true"></i>'.html_safe, receipt_list_item_path(id: i.id), method: :delete, class: "btn btn-danger" %>
+        </td>
       </tr>
     <% end %>
   </table>

@@ -14,6 +14,8 @@ Rails.application.routes.draw do
     resources :list_items, only: [:index, :new, :create, :edit, :update, :destroy]
   end
 
+  get "/receipts/:id/split", to: "receipts#split", as: "split_receipts"
+
   # ListItem
   # get '/list_items/new' => 'list_items#new'
   # post 'list_items/' => 'list_items#create'

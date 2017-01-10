@@ -30,12 +30,12 @@ class ListItemsController < ApplicationController
   end
 
   def create
-    puts ">>>>>>>>>>" + list_item_params.to_s
-    parameters[:list_item]
     @new_item = ListItem.new(list_item_params)
     if @new_item.save
-      # QUESTION - should be redirecting back to the receipt page, but how can I grab hold of the receipt id?
-      redirect_to receipts_path
+
+      receipt_id = ListItem.find(@new_item.id).receipt_id
+      puts ">>>>>>>" + receipt_id.to_s
+      redirect_to receipt_path(receipt_id)
     else
       redirect_to root_path
     end

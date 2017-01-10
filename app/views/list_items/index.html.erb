@@ -5,7 +5,7 @@
   </section>
 
   <section>
-    <p><%= link_to "New List Item", new_list_item_path(receipt_id: params[:id]) %></p>
+    <p><%= link_to "New List Item", new_receipt_list_item_path(receipt_id: params[:receipt_id]) %></p>
     <p><%= params[:id] %></p>
 
   </section>
@@ -23,7 +23,9 @@
         <td><%= i.quantity %></td>
         <td><%= i.description %></td>
         <td><%= "%.2f" % i.price %></td>
-        <td><%= link_to "Edit", edit_list_item_path(i.id) %></td>
+        <td><%= link_to "Edit", edit_receipt_list_item_path(id:i.id) %></td>
+        <td><%= i.id %></td>
+
       </tr>
     <% end %>
   </table>

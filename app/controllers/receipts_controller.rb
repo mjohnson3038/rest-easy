@@ -19,21 +19,6 @@ class ReceiptsController < ApplicationController
     end
   end
 
-  def show
-    if @user == nil
-      redirect_to login_failure_path
-    elsif @user.id != Receipt.find(params[:id]).user_id
-      puts ">>>>>>>>>>>>>>" + @user.id.to_s
-      redirect_to root_path, notice: "You are not logged in as the owner of this receipt"
-    elsif @user.id == Receipt.find(params[:id]).user_id
-      # puts ">>>>>>>>>>>>>>" + @user.id.to_s
-      @receipt = Receipt.find(params[:id])
-
-      # To display the associated list_items with the receipt instead of just the text from the receipt.
-      @items_per_receipt = ListItem.where(receipt_id: @receipt.id)
-    end
-  end
-
   def create
     # Calls user method in the application_controller
     user

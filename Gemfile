@@ -56,7 +56,13 @@ gem 'omniauth'
 #google as our authentication
 gem "omniauth-google-oauth2", "~> 0.2.1"
 # For Bootstrap
-gem 'bootstrap-sass', '~> 3.3.5.1'
+# gem 'bootstrap-sass', '~> 3.3.5.1'
+
+
+# For bootstrap CSS
+gem 'bootstrap-sass', '~> 3.2.0'
+gem 'autoprefixer-rails'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

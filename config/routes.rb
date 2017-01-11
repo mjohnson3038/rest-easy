@@ -15,5 +15,5 @@ Rails.application.routes.draw do
     resources :guests, only: [:index, :new, :create, :show]
   end
 
-  get "/receipts/:receipt_id/guests/:id/split", to: "guests#split", as: "split_receipt"
+  get "/receipts/guests/:id/split", to: "guests#split", as: "split_receipt"
 end

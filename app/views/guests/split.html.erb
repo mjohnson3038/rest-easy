@@ -1,0 +1,12 @@
+<h1>Splitting page!!!</h1>
+
+<p><%= @current_guest.name %></p>
+<p><%= @current_receipt.id %></p>
+
+<ul>
+  <% @list_items.each do |line| %>
+    <% line.quantity.times do %>
+      <li><%= line.description %></li>
+    <% end %>
+  <% end %>
+</ul>

@@ -1,0 +1,8 @@
+<p>You are on the show page for <%= @guest_id %></p>
+
+
+<ul>
+  <% @guest_items.each do |item| %>
+    <li><%= item.price %></li>
+  <% end %>
+</ul>

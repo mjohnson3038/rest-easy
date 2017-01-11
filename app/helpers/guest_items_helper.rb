@@ -1,0 +1,2 @@
+module GuestItemsHelper
+end

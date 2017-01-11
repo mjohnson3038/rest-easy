@@ -1,0 +1,2 @@
+class GuestItemsController < ApplicationController
+end

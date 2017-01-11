@@ -45,11 +45,15 @@ class ListItemsController < ApplicationController
   end
 
   def create
+
     @new_item = ListItem.new(list_item_params)
     if @new_item.save
 
       receipt_id = ListItem.find(@new_item.id).receipt_id
       puts ">>>>>>>" + receipt_id.to_s
+
+      @new_item.process()
+
       redirect_to receipt_path(receipt_id)
     else
       redirect_to root_path

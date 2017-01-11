@@ -1,34 +1,5 @@
 <article>
 
-<!-- Modal - information about how to properly upload a photo -->
-<div class="container-fluid">
-
-  <div class="page-header">
-    <div class="row">
-      <i class="fa fa-info fa-3x" data-toggle="modal" data-target="#aboutModal"></i>
-    </div>
-  </div>
-
-
-  <div class="modal fade", id="instructionModal" role="dialog">
-    <div class="modal-dialog">
-
-      <!-- Modal Content -->
-
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">x</button>
-          <h2 class="modal-title">About this Project</h2>
-        </div>
-
-        <div class="modal-body">
-          <p>This is maddie's capstone</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
   <% if !@receipt.errors.empty? %>
     <div class="alert alert-error">
       <ul>

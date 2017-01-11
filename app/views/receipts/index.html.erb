@@ -12,8 +12,6 @@
     <tr>
       <th>Name</th>
       <th>Zip Code</th>
-      <th>Download Link</th>
-      <th>&nbsp;</th>
     </tr>
   </thead>
   <tbody>
@@ -22,8 +20,10 @@
 
         <td><%= link_to receipt.name, receipt_list_items_path(receipt.id) %></td>
         <td><%= receipt.zip_code %></td>
-        <td><%= link_to "Download Receipt", receipt.attachment_url %></td>
-        <td><%= button_to "Delete",  receipt, method: :delete, class: "btn btn-danger", confirm: "Are you sure that you wish to delete #{receipt.name}?" %></td>
+
+        <td><div class="icon button"><%= link_to '<i class="fa fa-download" aria-hidden="true"></i>'.html_safe, receipt.attachment_url %><div></td>
+
+        <td><div class="icon button"><%= link_to '<i class="fa fa-trash" aria-hidden="true"></i>'.html_safe, receipt, method: :delete, class: "btn btn-danger", confirm: "Are you sure that you wish to delete #{receipt.name}?" %><div></td>
       </tr>
     <% end %>
   </tbody>

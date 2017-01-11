@@ -1,0 +1,15 @@
+<p>Form to create a new guest</p>
+
+<%= form_for @new_guest, :url => { method: :post, action: :create } do |f| %>
+
+  <%= f.label @name %>
+  <%= f.text_field @name %>
+
+  <%= f.label @phone %>
+  <%= f.text_field @phone %>
+
+  <%= f.hidden_field :receipt_id, :value => params[:receipt_id] %>
+
+  <%= f.submit "Submit" %>
+
+<% end %>

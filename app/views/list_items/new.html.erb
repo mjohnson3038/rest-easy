@@ -1,6 +1,6 @@
 <h1> Add an item to the receipt </h1>
 
-  <%= form_for @new_item, :url => { method: :post, action: :create } do |f| %>
+<%= form_for @new_item, :url => { method: :post, action: :create } do |f| %>
 
   <%= f.label @quantity %>
   <%= f.text_field @quantity %>

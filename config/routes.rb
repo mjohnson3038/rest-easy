@@ -18,5 +18,5 @@ Rails.application.routes.draw do
 
   # Ge
   get "/receipts/guests/:id/split", to: "guests#split", as: "split_receipt"
-  post "/receipts/guests/:id/split", to: "guest_items#create", as: "post_guest_items"
+  post "/receipts/guests/:id/", to: "guest_items#create", as: "post_guest_items"
 end

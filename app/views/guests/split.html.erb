@@ -11,4 +11,15 @@
   <% end %>
 </ul>
 
+<%= form_tag post_guest_items_path do %>
+<!-- Going through the list of list_items associated with a given receipt. -->
+  <% @list_items.each do |item| %>
+    <%= field_for "items[]", item do |pf| %>
+      <%= pf.check_box :item %>
+    <% end %>
+  <% end %>
+<% end %>
+
+
+
 <!-- This page should redirect to guests#index when this is completed.  -->

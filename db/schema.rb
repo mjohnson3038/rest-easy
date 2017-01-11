@@ -10,16 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170110235302) do
+ActiveRecord::Schema.define(version: 20170111225211) do
 
   create_table "guest_items", force: :cascade do |t|
     t.integer  "list_item_id"
-    t.integer  "guest_id"
     t.integer  "meal_percentage"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.float    "price"
-    t.index ["guest_id"], name: "index_guest_items_on_guest_id"
+    t.integer  "guest_id"
     t.index ["list_item_id"], name: "index_guest_items_on_list_item_id"
   end
 

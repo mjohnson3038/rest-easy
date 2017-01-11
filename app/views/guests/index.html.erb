@@ -1,0 +1,7 @@
+<h1> SHow page for the guests of <%= @receipt.id %></h1>
+
+<ul>
+  <% @guests_per_receipt.each do |guest| %>
+    <li><%= guest.name %></li>
+  <% end %>
+</ul>

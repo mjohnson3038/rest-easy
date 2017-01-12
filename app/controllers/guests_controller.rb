@@ -11,7 +11,7 @@ class GuestsController < ApplicationController
 
     # If this is the first guest that is created, then the status needs to change so that the receipt is no longer editable. Additionally, all of the guest_items must be generated.
     puts "receipt status ++++++" + @receipt.status.to_s
-    
+
     if @receipt.status != 2
       # Calls method to generate the guest methods and to change the status.
       @receipt.change_to_splittable()
@@ -28,7 +28,7 @@ class GuestsController < ApplicationController
     if @new_guest.save
       # receipt_id = Guest.find(@new_guest.id).receipt_id
       # puts ">>>>>>>" + receipt_id.to_s
-      redirect_to split_receipt_path(id: @new_guest.id)
+      redirect_to receipt_guest_guest_items_path(receipt_id: params[:receipt_id], guest_id: @new_guest.id)
     else
       redirect_to root_path
     end
@@ -41,15 +41,15 @@ class GuestsController < ApplicationController
     @guest_items = GuestItem.where(guest_id: @guest_id)
   end
 
-  def split
-    # TO identify the current guest selecting the boxes
-    @current_guest = Guest.find(params[:id])
-
-    @current_receipt = Receipt.find(@current_guest.receipt_id)
-
-    @list_items = ListItem.where(receipt_id: @current_receipt)
-
-  end
+  # def split
+  #   # TO identify the current guest selecting the boxes
+  #   @current_guest = Guest.find(params[:id])
+  #
+  #   @current_receipt = Receipt.find(@current_guest.receipt_id)
+  #
+  #   @list_items = ListItem.where(receipt_id: @current_receipt)
+  #
+  # end
 
   private
 

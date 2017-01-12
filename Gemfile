@@ -60,8 +60,7 @@ gem "omniauth-google-oauth2", "~> 0.2.1"
 
 
 # For bootstrap CSS
-gem 'bootstrap-sass', '~> 3.3.5.1'
-gem 'autoprefixer-rails'
+gem 'bootstrap-sass', '~> 3.3.6'
 
 
 group :development, :test do

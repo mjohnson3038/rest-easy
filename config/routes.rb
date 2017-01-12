@@ -12,9 +12,11 @@ Rails.application.routes.draw do
   resources :receipts, only: [:index, :new, :show, :create, :destroy] do
     # ListItems
     resources :list_items, only: [:index, :new, :create, :edit, :update, :destroy]
-    resources :guests, only: [:index, :new, :create, :show]
+    resources :guests, only: [:index, :new, :create, :show] do
+      resources :guest_items, only: [:index]
+    end
   end
 
-  get "/receipts/guests/:id/split", to: "guests#split", as: "split_receipt"
-  post "/receipts/guests/:id/", to: "guest_items#create", as: "post_guest_items"
+  # get "/receipts/guests/:id/split", to: "guests#split", as: "split_receipt"
+  # post "/receipts/guests/:id/", to: "guest_items#create", as: "post_guest_items"
 end

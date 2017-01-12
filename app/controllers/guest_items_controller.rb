@@ -9,9 +9,16 @@ class GuestItemsController < ApplicationController
     end
   end
 
+  def index
+    # Only need to display the items which are unclaimed OR Belong to the guest already
+
+    @items_claimed_by_guest = GuestItem.where(guest_id: params[:guest_id])
+
+    @guest_items = GuestItem.where(guest_id: nil)
+  end
+
   def guest_item_params
     params.require(:guest_item).permit(:price, :receipt_id)
   end
-
 
 end

@@ -56,11 +56,11 @@ gem 'omniauth'
 #google as our authentication
 gem "omniauth-google-oauth2", "~> 0.2.1"
 # For Bootstrap
-# gem 'bootstrap-sass', '~> 3.3.5.1'
+# gem 'bootstrap-sass', '~> 3
 
 
 # For bootstrap CSS
-gem 'bootstrap-sass', '~> 3.2.0'
+gem 'bootstrap-sass', '~> 3.3.5.1'
 gem 'autoprefixer-rails'
 
 

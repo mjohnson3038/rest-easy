@@ -54,6 +54,8 @@ class ListItemsController < ApplicationController
 
       @new_item.process()
       puts "YOU ARE ABOUT TO PROCESS A LIST ITEM!!! WOO AWESOME JOB!!!"
+
+      redirect_to receipt_path(receipt_id)
     else
       redirect_to root_path
     end

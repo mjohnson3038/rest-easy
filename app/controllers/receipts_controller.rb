@@ -51,9 +51,14 @@ class ReceiptsController < ApplicationController
     end
   end
 
+  # TO change the status and also to create the guest items before transitioning into creating the guests
+  def split
+
+  end
+
 private
   def receipt_params
-    params.require(:receipt).permit(:name, :attachment)
+    params.require(:receipt).permit(:name, :attachment, :zip_code, :status)
   end
 
   def check_user

@@ -11,7 +11,7 @@ class Receipt < ActiveRecord::Base
 
 
   # TODO need to validate the presence of status, between 1,2,3
-  # validates :rating, presence: true, :numericality => {only_integer: true, greater_than_or_equal_to: 1, less_than_or_equal_to: 5}
+  validates :status, :numericality => {only_integer: true, greater_than_or_equal_to: 1, less_than_or_equal_to: 3}
 
   def process
     # Turns image into an array of text strings which.
@@ -65,6 +65,8 @@ class Receipt < ActiveRecord::Base
         # To select the name/description of the item.
         examine_line.pop
         name = examine_line.join(" ")
+
+        # status indicates the stage in splitting the receipt
 
         puts "quantity >>>>" + quantity.to_s
         puts "name >>>>" + name.to_s

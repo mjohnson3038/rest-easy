@@ -18,6 +18,7 @@
       <%= f.text_field :zip_code %>
       <%= f.label :attachment %>
       <%= f.file_field :attachment %>
+      <%= f.hidden_field :status, :value => 1 %>
       <%= f.submit "Save", class: "btn btn-primary button" %>
     <% end %>
   </div>

@@ -5,17 +5,28 @@
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Waiting+for+the+Sunrise" rel="stylesheet">
   <%= csrf_meta_tags %>
 </head>
 <header>
+
+  <nav class="navbar navbar-default" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <% if session[:user_id] == nil %>
+          <a class="navbar-brand" href="/auth/google">Login/Sign Up</a>
+        <% else %>
+        <!-- QUESTION - um, why isnt this working? -->
+          <a class="navbar-brand" href="/sessions/" rel="nofollow" data-method="delete">Logout</a>
+        <% end %>
+      </div>
+    </div>
+  </nav>
+
   <h1 class = "logo">Rest Easy</h1>
   <h5 class = "logo">while we split your receipt for you</h5>
 
-  <% if session[:user_id] == nil %>
-    <%= link_to "Log In/Sign Up", "/auth/google" %>
-  <% else %>
-    <%= link_to "Log Out", sessions_path, method: :delete %>
-  <% end %>
+
 </header>
 <body>
 

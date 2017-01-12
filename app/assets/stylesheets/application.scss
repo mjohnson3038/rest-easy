@@ -1,2 +1,9 @@
+@import url("https://fonts.googleapis.com/css?family=Waiting+for+the+Sunrise");
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+.logo {
+  font-family: 'Waiting for the Sunrise', serif;
+  text-align: center;
+}

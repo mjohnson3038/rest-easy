@@ -6,6 +6,18 @@ class GuestsController < ApplicationController
   end
 
   def new
+
+    @receipt = Receipt.find(params[:receipt_id])
+
+    # If this is the first guest that is created, then the status needs to change so that the receipt is no longer editable. Additionally, all of the guest_items must be generated.
+    puts "receipt status ++++++" + @receipt.status.to_s
+    
+    if @receipt.status != 2
+      # Calls method to generate the guest methods and to change the status.
+      @receipt.change_to_splittable()
+    end
+
+    # Once that has been completed, create the guest as expected. This is the only thing the user can see.
     @new_guest = Guest.new
     @name = :name
     @phone = :phone

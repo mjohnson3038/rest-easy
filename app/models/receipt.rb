@@ -10,8 +10,8 @@ class Receipt < ActiveRecord::Base
   validates :user, :presence => true
 
 
-  # TODO need to validate the presence of status, between 1,2,3
-  validates :status, :numericality => {only_integer: true, greater_than_or_equal_to: 1, less_than_or_equal_to: 3}
+  # validates the presence of status, between 1(editable),2(splitable),3(completed)
+  validates :status, presence: true, :numericality => {only_integer: true, greater_than_or_equal_to: 1, less_than_or_equal_to: 3}
 
   def process
     # Turns image into an array of text strings which.
@@ -66,8 +66,6 @@ class Receipt < ActiveRecord::Base
         examine_line.pop
         name = examine_line.join(" ")
 
-        # status indicates the stage in splitting the receipt
-
         puts "quantity >>>>" + quantity.to_s
         puts "name >>>>" + name.to_s
         puts "price >>>>" + price.to_s
@@ -79,11 +77,32 @@ class Receipt < ActiveRecord::Base
     end
   end
 
-  # def process
-  #   self.attachment.file
-  #   # do stuff
-  #   self.list_items.create!({name: name, amount: amount})
-  # end
+  def change_to_splittable()
+    puts "YOU HAVE ENTERED THE RECEIPT MODEL! and are about to make all the guest_items assocaited with this receipt"
+
+    puts self
+    puts "the id of the receipt is: " + self.id.to_s
+
+    list_items = ListItem.where(receipt_id: self.id)
+
+    # Going through the ListItems associated with the receipt, making guest_items with the number of quantity, and the price divided if the quantity > 1.
+    list_items.each do |item|
+      item.quantity.times do
+        GuestItem.create!(list_item_id: item.id, price: (item.price/item.quantity))
+        puts item.price
+        puts item.quantity
+        puts GuestItem.last.price
+      end
+    end
+
+    # AND NOW, change the status since all the guestItems have been made.
+    receipt = self
+    receipt.status = 2
+    receipt.save
+
+    puts "receipt status" + receipt.status.to_s
+  end
+
 
   mount_uploader :attachment, AttachmentUploader # Tells rails to use this uploader for this model.
 

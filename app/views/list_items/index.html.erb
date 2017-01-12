@@ -8,7 +8,7 @@
 
   <section>
     <p><%= link_to "New List Item", new_receipt_list_item_path(receipt_id: params[:receipt_id]) %></p>
-    <p><%= link_to "Let's Begin Splitting", split_receipt_path(id: params[:receipt_id]) %></p>
+    <p><%= link_to "Let's Begin Splitting", new_receipt_guest_path(receipt_id: params[:receipt_id]) %></p>
 
   </section>
 

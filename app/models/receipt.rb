@@ -9,6 +9,10 @@ class Receipt < ActiveRecord::Base
 
   validates :user, :presence => true
 
+
+  # TODO need to validate the presence of status, between 1,2,3
+  # validates :rating, presence: true, :numericality => {only_integer: true, greater_than_or_equal_to: 1, less_than_or_equal_to: 5}
+
   def process
     # Turns image into an array of text strings which.
     file = self.attachment.file.file

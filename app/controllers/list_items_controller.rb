@@ -46,14 +46,11 @@ class ListItemsController < ApplicationController
 
   def create
     @new_item = ListItem.new(list_item_params)
-    puts "INSIDE LISTITEM#create"
     if @new_item.save
 
       receipt_id = ListItem.find(@new_item.id).receipt_id
-      puts ">>>>>>>" + receipt_id.to_s
 
       @new_item.process()
-      puts "YOU ARE ABOUT TO PROCESS A LIST ITEM!!! WOO AWESOME JOB!!!"
 
       redirect_to receipt_path(receipt_id)
     else

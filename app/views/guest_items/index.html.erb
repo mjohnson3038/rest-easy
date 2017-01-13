@@ -3,6 +3,11 @@
 
   <p>Check the items that you ordered</p>
 
+  <p>All guests associated with receipt</p>
+  <% @receipt_guests.each do |guest| %>
+    <p><%= guest.name %><p>
+  <% end %>
+
   <p>Current User: <%= @current_guest.name %></p>
 
   <%= form_tag (update_guest_items_path(guest_id: @guest_id)) do %>
@@ -13,7 +18,7 @@
         <th>Check</th>
       </tr>
       <% @guest_items.each do |item| %>
-        <tr>
+        <tr class="<%= 'claimed' if item.guest_id != nil %>">
           <td><p><%= ListItem.find(item.list_item_id).description%></p></td>
           <td><%= item.price%></td>
           <td><%= check_box_tag 'item_ids[]', item.id %></td>

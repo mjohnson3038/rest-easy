@@ -18,6 +18,8 @@ class GuestItemsController < ApplicationController
     @guest_items = GuestItem.includes(:list_item).where(list_items: {receipt_id: @receipt_id})
 
     @current_guest = Guest.find(params[:guest_id])
+
+    @receipt_guests = Guest.where(receipt_id: @receipt_id)
   end
 
   def guest_item_params
@@ -25,13 +27,12 @@ class GuestItemsController < ApplicationController
   end
 
   def update
-    # Id's that were checked come in an array of strings
+    # Id's that were checked come in an array of strings. Go through the array and update all the receipt items with the given guest's id.
     params[:item_ids].each do |id|
       update = GuestItem.find(id.to_i)
       update.guest_id = params[:guest_id]
       update.save
     end
-    puts ">>>>>>>>" + GuestItem.where(guest_id: params[:guest_id]).to_s
     redirect_to root_path
 
   end

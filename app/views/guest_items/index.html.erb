@@ -5,24 +5,27 @@
 
   <p>Current User: <%= @current_guest.name %></p>
 
-
-  <table class="table">
-    <tr>
-      <th>Description</th>
-      <th>Price</th>
-      <th>Check</th>
-    </tr>
-    <% @guest_items.each do |item| %>
+  <%= form_tag (update_guest_items_path(guest_id: @guest_id)) do %>
+    <table class="table">
       <tr>
-        <td><%= ListItem.find(item.list_item_id).description%></td>
-        <td><%= item.price%></td>
-        <td><%= check_box_tag 'item_ids[]', item.id -%></td>
-        <%= h item.guest_id -%>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Check</th>
       </tr>
-    <% end %>
-  </table>
+      <% @guest_items.each do |item| %>
+        <tr>
+          <td><p><%= ListItem.find(item.list_item_id).description%></p></td>
+          <td><%= item.price%></td>
+          <td><%= check_box_tag 'item_ids[]', item.id %></td>
+          <%= h item.guest_id -%>
+        </tr>
+      <% end %>
+    </table>
 
-  <div class="actions">
-    <input type="submit" value="Submit Orders">
-  </div>
+    <div class="actions">
+      <input type="submit" value="Submit My Orders">
+    </div>
+
+    <% end %>
+
 </section>

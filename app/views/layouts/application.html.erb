@@ -16,6 +16,14 @@
       <div class="navbar-header row">
 
         <div class="col-xs-12 col-l-6">
+          <a class="navbar-brand" href="/receipts">Instructions</a>
+        </div>
+
+        <div class="col-xs-12 col-l-6">
+          <a class="navbar-brand" href="/receipts">All Receipts</a>
+        </div>
+
+        <div class="col-xs-12 col-l-6">
           <% if session[:user_id] == nil %>
           <a class="navbar-brand" href="/auth/google">Login/Sign Up</a>
           <% else %>
@@ -24,9 +32,6 @@
           <% end %>
         </div>
 
-        <div class="col-xs-12 col-l-6">
-          <a class="navbar-brand" href="/receipts">See all Receipts</a>
-        </div>
       </div>
     </div>
   </nav>

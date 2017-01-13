@@ -11,6 +11,7 @@ class GuestItemsController < ApplicationController
 
   def index
     # Only need to display the items which are unclaimed OR Belong to the guest already
+    @guest_id = params[:guest_id]
 
     @receipt_id = params[:receipt_id]
 
@@ -21,6 +22,18 @@ class GuestItemsController < ApplicationController
 
   def guest_item_params
     params.require(:guest_item).permit(:price, :receipt_id)
+  end
+
+  def update
+    # Id's that were checked come in an array of strings
+    params[:item_ids].each do |id|
+      update = GuestItem.find(id.to_i)
+      update.guest_id = params[:guest_id]
+      update.save
+    end
+    puts ">>>>>>>>" + GuestItem.where(guest_id: params[:guest_id]).to_s
+    redirect_to root_path
+
   end
 
 end

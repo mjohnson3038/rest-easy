@@ -1,4 +1,4 @@
-class SessionsController < ApplicationController 
+class SessionsController < ApplicationController
   skip_before_action :require_login, only: [:index, :create]
 
   def create
@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
 
     # Save the user ID in the session
     session[:user_id] = @user.id
-    redirect_to sessions_path
+    redirect_to receipts_path
   end
 
   def index

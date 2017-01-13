@@ -1,8 +1,28 @@
-<p>guest_items#index</p>
+<section>
+  <p><%= @receipt %></p>
 
-<p>Item's claimed by Guest</p>
-<% @items_claimed_by_guest.each do |item| %>
-  <p><%= item.id %></p>
-<% end %>
+  <p>Check the items that you ordered</p>
 
-<p>Unclaimed</p>
+  <p>Current User: <%= @current_guest.name %></p>
+
+
+  <table class="table">
+    <tr>
+      <th>Description</th>
+      <th>Price</th>
+      <th>Check</th>
+    </tr>
+    <% @guest_items.each do |item| %>
+      <tr>
+        <td><%= ListItem.find(item.list_item_id).description%></td>
+        <td><%= item.price%></td>
+        <td><%= check_box_tag 'item_ids[]', item.id -%></td>
+        <%= h item.guest_id -%>
+      </tr>
+    <% end %>
+  </table>
+
+  <div class="actions">
+    <input type="submit" value="Submit Orders">
+  </div>
+</section>

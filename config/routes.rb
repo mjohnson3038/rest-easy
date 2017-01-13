@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     # ListItems
     resources :list_items, only: [:index, :new, :create, :edit, :update, :destroy]
     resources :guests, only: [:index, :new, :create, :show] do
-      resources :guest_items, only: [:index]
+      resources :guest_items, only: [:index, :update]
     end
   end
 

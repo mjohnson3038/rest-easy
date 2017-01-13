@@ -6,19 +6,27 @@
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link href="https://fonts.googleapis.com/css?family=Waiting+for+the+Sunrise" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Overpass+Mono" rel="stylesheet">
   <%= csrf_meta_tags %>
 </head>
 <header>
 
   <nav class="navbar navbar-default" role="navigation">
     <div class="container">
-      <div class="navbar-header">
-        <% if session[:user_id] == nil %>
+      <div class="navbar-header row">
+
+        <div class="col-xs-12 col-l-6">
+          <% if session[:user_id] == nil %>
           <a class="navbar-brand" href="/auth/google">Login/Sign Up</a>
-        <% else %>
-        <!-- QUESTION - um, why isnt this working? -->
+          <% else %>
+          <!-- QUESTION - um, why isnt this working? -->
           <a class="navbar-brand" href="/sessions/" rel="nofollow" data-method="delete">Logout</a>
-        <% end %>
+          <% end %>
+        </div>
+
+        <div class="col-xs-12 col-l-6">
+          <a class="navbar-brand" href="/receipts">See all Receipts</a>
+        </div>
       </div>
     </div>
   </nav>

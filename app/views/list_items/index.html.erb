@@ -2,17 +2,26 @@
 <article>
 
   <section>
-    <p>Receipt id: <%= params[:receipt_id] %></p>
-    <h1>You are displaying the show page for <%= @receipt.zip_code %></h1>
+
+    <div id="main-container" class="container-fluid">
+      <div class="row">
+        <div class="col-md-6 col-xs-12">
+          <p><%= link_to "New List Item", new_receipt_list_item_path(receipt_id: params[:receipt_id]), class: "button btn" %></p>
+        </div>
+        <div class="col-md-offset-9 col-xs-12">
+          <p><%= link_to "Let's Begin Splitting", new_receipt_guest_path(receipt_id: params[:receipt_id]), class: "button btn" %></p>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
   </section>
 
-  <section>
-    <p><%= link_to "New List Item", new_receipt_list_item_path(receipt_id: params[:receipt_id]) %></p>
-    <p><%= link_to "Let's Begin Splitting", new_receipt_guest_path(receipt_id: params[:receipt_id]) %></p>
-
-  </section>
-
-  <table class="table">
+  <table class="table receipt">
     <tr>
       <th>Quantity</th>
       <th>Description</th>
@@ -25,7 +34,7 @@
         <td><%= i.quantity %></td>
         <td><%= i.description %></td>
         <td><%= "%.2f" % i.price %></td>
-        <td><%= link_to '<i class="fa fa-pencil" aria-hidden="true"></i>'.html_safe, edit_receipt_list_item_path(id:i.id) %></td>
+        <td><%= link_to '<i class="fa fa-pencil" aria-hidden="true"></i>'.html_safe, edit_receipt_list_item_path(id: i.id), class: "btn"%></td>
         <td><%= link_to '<i class="fa fa-trash" aria-hidden="true"></i>'.html_safe, receipt_list_item_path(id: i.id), method: :delete, class: "btn btn-danger"%></td>
 
       </tr>

@@ -31,7 +31,7 @@ class ReceiptsController < ApplicationController
       # Once the receipt has been saved/registered then it should automatically also create all the list items associated with the receipt.
       @receipt.process()
 
-      redirect_to receipts_path, notice: "The receipt has been uploaded"
+      redirect_to receipt_list_items_path(receipt_id: @receipt.id), notice: "The receipt has been uploaded"
     else
       render "new"
     end

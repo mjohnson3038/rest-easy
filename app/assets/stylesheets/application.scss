@@ -1,4 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Waiting+for+the+Sunrise");
+@import url("https://fonts.googleapis.com/css?family=Overpass+Mono");
+
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
@@ -6,4 +8,14 @@
 .logo {
   font-family: 'Waiting for the Sunrise', serif;
   text-align: center;
+}
+
+.receipt {
+  font-family: 'Overpass Mono', monospace;;
+}
+
+.button {
+  font-family: 'Waiting for the Sunrise', serif;
+  background-color: #337ab7;
+  color: white;
 }

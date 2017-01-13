@@ -16,15 +16,16 @@
       <%= f.text_field :name %>
       <%= f.label :zip_code %>
       <%= f.text_field :zip_code %>
-      <%= f.label :attachment %>
-      <%= f.file_field :attachment %>
+      <!-- Find a way to change the button -->
+      <%= f.label :attachment%>
+      <%= f.file_field :attachment%>
       <%= f.hidden_field :status, :value => 1 %>
       <%= f.submit "Save", class: "btn btn-primary button" %>
     <% end %>
   </div>
 
   <div>
-    <%= link_to "Cancel", receipts_path, class: "button" %>
+    <%= link_to "Cancel", receipts_path, class: "btn button" %>
   </div>
 
 </article>

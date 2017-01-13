@@ -1,12 +1,16 @@
-<p>Form to create a new guest</p>
+<p>Begin by creating your first guest</p>
 
-<%= form_for @new_guest, :url => { method: :post, action: :create } do |f| %>
+<%= form_for @new_guest, :url => { method: :post, action: :create, class:"form" } do |f|%>
 
-  <%= f.label @name %>
-  <%= f.text_field @name %>
+  <div class="form-group">
+    <%= f.label @name %>
+    <%= f.text_field @name %>
+  </div>
 
-  <%= f.label @phone %>
-  <%= f.text_field @phone %>
+  <div class="form-group">
+    <%= f.label @phone %>
+    <%= f.text_field @phone %>
+  </div>
 
   <%= f.hidden_field :receipt_id, :value => params[:receipt_id] %>
 

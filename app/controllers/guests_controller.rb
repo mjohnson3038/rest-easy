@@ -12,6 +12,7 @@ class GuestsController < ApplicationController
     # If this is the first guest that is created, then the status needs to change so that the receipt is no longer editable. Additionally, all of the guest_items must be generated.
     puts "receipt status ++++++" + @receipt.status.to_s
 
+    # TODO Why is the splittable method not working?
     if @receipt.status != 2
       # Calls method to generate the guest methods and to change the status.
       @receipt.change_to_splittable()
@@ -41,15 +42,26 @@ class GuestsController < ApplicationController
     @guest_items = GuestItem.where(guest_id: @guest_id)
   end
 
-  # def split
-  #   # TO identify the current guest selecting the boxes
-  #   @current_guest = Guest.find(params[:id])
-  #
-  #   @current_receipt = Receipt.find(@current_guest.receipt_id)
-  #
-  #   @list_items = ListItem.where(receipt_id: @current_receipt)
-  #
-  # end
+  def tip
+    @current_guest_id = params[:guest_id]
+
+    @guest_items = GuestItem.where(guest_id: @current_guest_id)
+
+    total = 0
+    @guest_items.each do |item|
+      total += item.price
+    end
+
+    @total = total
+    tax = 9.6 * 0.01
+
+    @tax = total * tax
+
+    @guest = Guest.find(@current_guest_id)
+    # TODO - why isn't the total method working?
+    # @min = (@current_guest.total()) * 0.15
+    # @max = @current_guest.total()
+  end
 
   private
 

@@ -5,6 +5,8 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+
+
 .logo {
   font-family: 'Waiting for the Sunrise', serif;
   text-align: center;
@@ -18,6 +20,12 @@
   font-family: 'Waiting for the Sunrise', serif;
   background-color: #337ab7;
   color: white;
+}
+
+// For Home Page Main#index
+.fa-camera {
+  font-size: 1.5em;
+  text-align: center;
 }
 
 // For SPLITTING RECEIPT

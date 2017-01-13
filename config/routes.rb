@@ -18,7 +18,11 @@ Rails.application.routes.draw do
     end
   end
 
-  post "/guest/:guest_id/guest_items/", to: "guest_items#update", as: "update_guest_items"
+  post "/guests/:guest_id/guest_items/", to: "guest_items#update", as: "update_guest_items"
+
+  # Page where user can select the tip and view the total for their order
+  get "guests/:guest_id/tip", to: "guests#tip", as: "guests_tip"
+  post "guests/:guest_id ", to: "guests#add_tip", as: "guests_tip_add"
 
 
   # get "/receipts/guests/:id/split", to: "guests#split", as: "split_receipt"

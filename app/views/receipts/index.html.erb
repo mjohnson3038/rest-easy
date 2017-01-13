@@ -12,14 +12,22 @@
     <tr>
       <th>Name</th>
       <th>Zip Code</th>
+      <th>STATUS - for debugging</th>
     </tr>
   </thead>
   <tbody>
     <% @receipts.each do |receipt| %>
       <tr>
+        <% if receipt.status = 1 %>
+          <td><%= link_to receipt.name, receipt_list_items_path(receipt.id) %></td>
+        <% elsif receipt.status = 2 && Guest.where(receipt_id: receipt.id).count == 0%>
+          <td><%= link_to receipt.name, new_receipt_guest_path(receipt_id: receipt.id) %></td>
+        <% elsif receipt.status = 2 && Guest.where(receipt_id: receipt.id).count >= 1%>
+          <td><%= link_to receipt.name, receipt_guest_guest_items_path(receipt_id: receipt.id, guest_id: Guest.where(receipt_id: receipt.id).last) %></td>
+        <% end %>
 
-        <td><%= link_to receipt.name, receipt_list_items_path(receipt.id) %></td>
         <td><%= receipt.zip_code %></td>
+        <td><%= receipt.status %></td>
 
         <td><div class="icon btn"><%= link_to '<i class="fa fa-download" aria-hidden="true"></i>'.html_safe, receipt.attachment_url, class: "btn"  %><div></td>
 

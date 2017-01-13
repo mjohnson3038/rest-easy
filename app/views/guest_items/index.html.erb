@@ -5,7 +5,7 @@
 
   <p>All guests associated with receipt</p>
   <% @receipt_guests.each do |guest| %>
-    <p><%= guest.name %><p>
+    <p><%= link_to guest.name, receipt_guest_guest_items_path(receipt_id: guest.receipt_id, guest_id: guest.id), class: "button btn" %></p>
   <% end %>
 
   <p>Current User: <%= @current_guest.name %></p>

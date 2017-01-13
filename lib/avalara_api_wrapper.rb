@@ -8,8 +8,6 @@ class AvalaraApiWrapper
   def self.sales_tax(zip)
   #   url = BASE_URL + "country=#{COUNTRY}" + "&postal=#{zip}" + "&apikey=#{KEY}"
 
-# https://taxrates.api.avalara.com:443/postal?country=USA&postal=02131 + "&apikey=#{KEY}"
-  #
     data = HTTParty.get(url)
     tax = []
 

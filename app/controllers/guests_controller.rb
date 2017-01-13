@@ -63,6 +63,14 @@ class GuestsController < ApplicationController
     # @max = @current_guest.total()
   end
 
+  def add_tip
+    puts ">>>>>>>>>>>>" + params.to_s
+    current_guest = Guest.find(params[:guest_id])
+    receipt_id = current_guest.receipt_id
+    redirect_to new_receipt_guest_path(receipt_id: receipt_id)
+    # TODO - add a flash message thanking the guest, and naming the total
+  end
+
   private
 
   def guest_params

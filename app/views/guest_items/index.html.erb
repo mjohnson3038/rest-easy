@@ -8,6 +8,22 @@
     <p><%= link_to guest.name, receipt_guest_guest_items_path(receipt_id: guest.receipt_id, guest_id: guest.id), class: "button btn" %></p>
   <% end %>
 
+  <%= form_for @new_guest, :url => { method: :post, action: :create_guest, class:"form", remote: true } do |f|%>
+
+    <div class="form-group">
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :phone %>
+      <%= f.text_field :phone %>
+    </div>
+
+    <%= f.hidden_field :receipt_id, :value => params[:receipt_id] %>
+    <%= f.submit "Submit" %>
+  <% end %>
+
   <p>Current User: <%= @current_guest.name %></p>
 
   <%= form_tag (update_guest_items_path(guest_id: @guest_id)) do %>

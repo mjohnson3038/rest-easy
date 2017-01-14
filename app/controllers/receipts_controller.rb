@@ -31,6 +31,10 @@ class ReceiptsController < ApplicationController
       # Once the receipt has been saved/registered then it should automatically also create all the list items associated with the receipt.
       @receipt.process()
 
+      # IF THE RECEIPT WAS SAVED, create the first guest of the receipt, ie the user
+
+      Guest.create!(name: @user.name, receipt_id: @receipt.id)
+
       redirect_to receipt_list_items_path(receipt_id: @receipt.id), notice: "The receipt has been uploaded"
     else
       render "new"
@@ -49,11 +53,6 @@ class ReceiptsController < ApplicationController
       @receipt.destroy
       redirect_to receipts_path
     end
-  end
-
-  # TO change the status and also to create the guest items before transitioning into creating the guests
-  def split
-
   end
 
 private

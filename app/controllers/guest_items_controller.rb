@@ -10,6 +10,8 @@ class GuestItemsController < ApplicationController
   end
 
   def index
+
+
     # Only need to display the items which are unclaimed OR Belong to the guest already
     @guest_id = params[:guest_id]
 
@@ -21,6 +23,9 @@ class GuestItemsController < ApplicationController
 
     # TODO - make the list of guests displayed to NOT include the current_guest
     @receipt_guests = Guest.where(receipt_id: @receipt_id)
+
+    # FOR THE AJAX OF ADDING A NEW USER
+    @new_guest = Guest.new
   end
 
   def update
@@ -34,6 +39,21 @@ class GuestItemsController < ApplicationController
     end
     # redirect_to root_path
     redirect_to guests_tip_path(params[:guest_id])
+  end
+
+  def create_guest
+    @new_guest = Guest.new(params[:guest])
+
+    respond_to do |format|
+      if @new_guest.save
+        format.html {redirect_to @new_guest, notice: "Guest was successfully created"}
+        format.js
+        format.json{ render json: @new_guest, status: :created, location: @new_guest}
+      else
+        format.html { render action: "new" }
+        format.json { render json: @new_guest.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   private

@@ -18,6 +18,9 @@ Rails.application.routes.draw do
     end
   end
 
+  # TO HANDLE AJAX of creating new guest
+  post "receipts/:receipt_id/guests/", to: "guest_items#create_guest", as: "AJAX_create_guest"
+
   post "/guests/:guest_id/guest_items/", to: "guest_items#update", as: "update_guest_items"
 
   # Page where user can select the tip and view the total for their order

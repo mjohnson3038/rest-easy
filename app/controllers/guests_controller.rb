@@ -1,3 +1,5 @@
+# TODO be able to unclick the items people ordered. 
+
 class GuestsController < ApplicationController
   def index
     # @params = params[:]
@@ -67,9 +69,10 @@ class GuestsController < ApplicationController
     puts ">>>>>>>>>>>>" + params.to_s
     current_guest = Guest.find(params[:guest_id])
     receipt_id = current_guest.receipt_id
-    redirect_to new_receipt_guest_path(receipt_id: receipt_id)
+    redirect_to receipt_guest_guest_items_path(receipt_id: receipt_id, guest_id: params[:guest_id])
     # TODO - add a flash message thanking the guest, and naming the total
     # TODO - use ajax to toal tip, items, and tax
+    # TODO remove Guest#new form and from the controller and the route, handled by AJAX in teh GUEST ITems controller, ask Kari if this is okay.
   end
 
   private

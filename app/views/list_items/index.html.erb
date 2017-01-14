@@ -9,7 +9,7 @@
           <p><%= link_to "New List Item", new_receipt_list_item_path(receipt_id: params[:receipt_id]), class: "button btn" %></p>
         </div>
         <div class="col-md-offset-9 col-xs-12">
-          <p><%= link_to "Let's Begin Splitting", new_receipt_guest_path(receipt_id: params[:receipt_id]), class: "button btn" %></p>
+          <p><%= link_to "Let's Begin Splitting", receipt_guest_guest_items_path(receipt_id: params[:receipt_id], guest_id: Guest.find_by(receipt_id: params[:receipt_id]).id), class: "button btn" %></p>
         </div>
       </div>
     </div>

@@ -77,6 +77,7 @@ class Receipt < ActiveRecord::Base
     end
   end
 
+  # TODO - why is this method not working? Written in the controller, but ideally would be here.
   def change_to_splittable()
     puts "YOU HAVE ENTERED THE RECEIPT MODEL! and are about to make all the guest_items assocaited with this receipt"
 
@@ -100,7 +101,7 @@ class Receipt < ActiveRecord::Base
     receipt.status = 2
     receipt.save
 
-    puts "receipt status" + receipt.status.to_s
+    puts ">>>>>>>>>>>>>>>>receipt status" + receipt.status.to_s
   end
 
 

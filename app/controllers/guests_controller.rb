@@ -69,6 +69,7 @@ class GuestsController < ApplicationController
     receipt_id = current_guest.receipt_id
     redirect_to new_receipt_guest_path(receipt_id: receipt_id)
     # TODO - add a flash message thanking the guest, and naming the total
+    # TODO - use ajax to toal tip, items, and tax
   end
 
   private

@@ -21,8 +21,19 @@
         <tr class="<%= 'claimed' if item.guest_id != nil %>">
           <td><p><%= ListItem.find(item.list_item_id).description%></p></td>
           <td><%= item.price%></td>
-          <td><%= check_box_tag 'item_ids[]', item.id %></td>
-          <%= h item.guest_id -%>
+
+          <!-- The checkbox should be prechecked it the guest_id id == guest.id -->
+
+          <% if item.guest_id != @current_guest.id %>
+            <td><%= check_box_tag 'item_ids[]', item.id %></td>
+            <%= h item.guest_id -%>
+          <% else %>
+            <td><%= check_box_tag 'item_ids[]', item.id, true %></td>
+            <%= h item.guest_id -%>
+          <% end %>
+
+          <!-- TODO maybe make what is visible to the guest different depending on what is available to be checked off -->
+
         </tr>
       <% end %>
     </table>

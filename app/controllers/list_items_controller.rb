@@ -52,7 +52,7 @@ class ListItemsController < ApplicationController
 
       @new_item.process()
 
-      redirect_to receipt_path(receipt_id)
+      redirect_to receipt_list_items_path(receipt_id: receipt_id)
     else
       redirect_to root_path
     end

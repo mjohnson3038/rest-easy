@@ -1,3 +1,10 @@
+# TODO - change accessibility via status and user_id.
+# TODO Error handling, for EVERYTHING (phone number, etc)
+# TODO - get avalara to work
+# TODO - tip calculator - built in to say the percentage - AJAX ?? - DO NOT WANT TO HAVE TO REFReSH.
+# TODO - talk to someone about the routes - especially the AJAX routes. 
+
+
 Rails.application.routes.draw do
   root 'mains#index'
 

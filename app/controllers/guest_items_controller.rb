@@ -12,12 +12,20 @@ class GuestItemsController < ApplicationController
   end
 
   def index
-
-
     # Only need to display the items which are unclaimed OR Belong to the guest already
     @guest_id = params[:guest_id]
 
     @receipt_id = params[:receipt_id]
+
+    # This is only called the first time you go to guest_items#index because the status changes within the method change_to_splittable. Bug occured because no longer going through the guest#new page.
+
+    @receipt = Receipt.find(@receipt_id)
+    if @receipt.status != 2
+      # Calls method to generate the guest methods and to change the status.
+      @receipt.change_to_splittable()
+    end
+
+    # DEBUGGING - guestItems are not appearing - are they being generated? - GuestItems are generated when you click "Let's begin splitting"
 
     @guest_items = GuestItem.includes(:list_item).where(list_items: {receipt_id: @receipt_id})
 

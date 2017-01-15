@@ -7,11 +7,10 @@
 <%= link_to "New Receipt", new_receipt_path, class: "btn btn-primary" %>
 <br />
 <br />
-<table class="table table-bordered table-striped">
+<table class="table-responsive table-bordered table-striped">
   <thead>
     <tr>
       <th>Name</th>
-      <th>Zip Code</th>
       <th>Original Receipt</th>
       <th>Delete</th>
     </tr>
@@ -25,7 +24,6 @@
           <td><%= link_to receipt.name, receipt_guest_guest_items_path(receipt_id: receipt.id, guest_id: Guest.where(receipt_id: receipt.id).last) %></td>
         <% end %>
 
-        <td><%= receipt.zip_code %></td>
 
         <td><div class="icon btn"><%= link_to '<i class="fa fa-download" aria-hidden="true"></i>'.html_safe, receipt.attachment_url, class: "btn"  %><div></td>
 

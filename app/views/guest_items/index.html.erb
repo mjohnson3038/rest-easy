@@ -27,7 +27,7 @@
   <p>Current User: <%= @current_guest.name %></p>
 
   <%= form_tag (update_guest_items_path(guest_id: @guest_id)) do %>
-    <table class="table">
+    <table class="table-responsive">
       <tr>
         <th>Description</th>
         <th>Price</th>

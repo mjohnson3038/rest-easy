@@ -18,7 +18,7 @@
       <%= f.text_field :zip_code %>
       <!-- Find a way to change the button -->
       <%= f.label :attachment%>
-      <%= f.file_field :attachment%>
+      <%= f.file_field :attachment, class: "btn button"%>
       <%= f.hidden_field :status, :value => 1 %>
       <%= f.submit "Save", class: "btn btn-primary button" %>
     <% end %>

@@ -1,8 +1,33 @@
-<p>You are on the show page for <%= @guest_id %></p>
+<h4>Add Tip</h4>
+
+<h5>Receipt Summary</h5>
 
 
-<ul>
-  <% @guest_items.each do |item| %>
-    <li><%= item.price %></li>
-  <% end %>
-</ul>
+<%= form_tag (guests_tip_add_path(guest_id: @current_guest_id)) do %>
+  <table class="table-responsive">
+    <tr>
+      <th>Description</th>
+      <th>Price</th>
+    </tr>
+    <% @guest_items.each do |item| %>
+      <tr>
+        <td><p><%= ListItem.find(item.list_item_id).description%></p></td>
+        <td><%= item.price%></td>
+      </tr>
+    <% end %>
+    <tr>
+      <td>TAX</td>
+      <td><%=@tax%></td>
+    </tr>
+    <tr>
+      <td>TOTAL</td>
+      <td><%=@total + @tax%></td>
+    </tr>
+    <tr>
+      <td><%= label_tag(:tip, "TIP:") %></td>
+      <td><%= text_field_tag(:tip) %></td>
+    </tr>
+  </table>
+
+  <%= submit_tag("Submit") %>
+<% end %>

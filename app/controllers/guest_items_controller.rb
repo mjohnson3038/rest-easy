@@ -47,8 +47,10 @@ class GuestItemsController < ApplicationController
         update.save
       end
     end
+
+    puts ">>>>>>" + params.to_s
     # redirect_to root_path
-    redirect_to guests_tip_path(params[:guest_id])
+    redirect_to receipt_guest_path(receipt_id: Guest.find(params[:guest_id]).receipt_id, id: params[:guest_id])
   end
 
   def create_guest

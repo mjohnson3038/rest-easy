@@ -30,10 +30,15 @@ class GuestsController < ApplicationController
       redirect_to root_path
     end
   end
+  #
+  # def show
+  #   # receipt_id = params[:receipt_id]
+  #   @guest_id = params[:id]
+  #
+  #   @guest_items = GuestItem.where(guest_id: @guest_id)
+  # end
 
   def show
-
-    # When receipt status = 2, goes to the page where you can calculate and submit the tip
     @current_guest_id = params[:id]
     @guest_items = GuestItem.where(guest_id: @current_guest_id)
 
@@ -44,10 +49,21 @@ class GuestsController < ApplicationController
     @total = total
     tax = 9.6 * 0.01
     @tax = total * tax
+
     @guest = Guest.find(@current_guest_id)
     # TODO - why isn't the total method working?
     # @min = (@current_guest.total()) * 0.15
     # @max = @current_guest.total()
+  end
+
+  def add_tip
+    puts ">>>>>>>>>>>>" + params.to_s
+    current_guest = Guest.find(params[:guest_id])
+    receipt_id = current_guest.receipt_id
+    redirect_to receipt_guest_guest_items_path(receipt_id: receipt_id, guest_id: params[:guest_id])
+    # TODO - add a flash message thanking the guest, and naming the total
+    # TODO - use ajax to toal tip, items, and tax
+    # TODO remove Guest#new form and from the controller and the route, handled by AJAX in teh GUEST ITems controller, ask Kari if this is okay.
   end
 
   private

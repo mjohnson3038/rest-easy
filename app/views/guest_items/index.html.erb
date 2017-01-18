@@ -8,21 +8,43 @@
     <p><%= link_to guest.name, receipt_guest_guest_items_path(receipt_id: guest.receipt_id, guest_id: guest.id), class: "button btn" %></p>
   <% end %>
 
-  <%= form_for @new_guest, :url => { method: :post, action: :create_guest, class:"form", remote: true } do |f|%>
+  <!-- Button trigger modal -->
+  <button class="btn btn-link" data-toggle="modal" data-target="#receipt-guest-<%= @receipt_id %>-notes">
+    Add New Guest
+  </button>
 
-    <div class="form-group">
-      <%= f.label :name %>
-      <%= f.text_field :name %>
+  <!-- Modal -->
+  <div class="modal fade" id="receipt-guest-<%= @receipt_id %>-notes" tabindex="-1" role="dialog" aria-labelledby="receipt-guest-<%= @receipt_id %>-label" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="receipt-guest-<%= @receipt_id %>-label">Calculate Tip</h4>
+        </div>
+        <div class="modal-body">
+          <%= form_for @new_guest, :url => { method: :post, action: :create_guest, class:"form", remote: true } do |f|%>
+
+            <div class="form-group">
+              <%= f.label :name %>
+              <%= f.text_field :name %>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :phone %>
+              <%= f.text_field :phone %>
+            </div>
+
+            <%= f.hidden_field :receipt_id, :value => params[:receipt_id] %>
+            <%= f.submit "Submit", class:"btn btn-primary" %>
+          <% end %>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
+        </div>
+      </div>
     </div>
+  </div>
 
-    <div class="form-group">
-      <%= f.label :phone %>
-      <%= f.text_field :phone %>
-    </div>
 
-    <%= f.hidden_field :receipt_id, :value => params[:receipt_id] %>
-    <%= f.submit "Submit" %>
-  <% end %>
 
   <p>Current User: <%= @current_guest.name %></p>
 
@@ -59,5 +81,7 @@
     </div>
 
     <% end %>
+
+    <p><%= link_to "Finalize Receipt", finalize_receipt_path(receipt_id: params[:receipt_id]), class: "button btn" %></p>
 
 </section>

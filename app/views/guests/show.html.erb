@@ -2,6 +2,29 @@
 
 <h5>Receipt Summary</h5>
 
+<!-- Button trigger modal -->
+<button class="btn btn-link" data-toggle="modal" data-target="#todo-<%= @current_guest_id %>-notes">
+  Calculate Tip
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="todo-<%= @current_guest_id %>-notes" tabindex="-1" role="dialog" aria-labelledby="todo-<%= @current_guest_id %>-label" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="todo-<%= @current_guest_id %>-label">Calculate Tip</h4>
+      </div>
+      <div class="modal-body">
+        Meal total: <%=@total + @tax%>
+        <!-- TODO - is there a way to provide a range tag with the number and the javascrip -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 <%= form_tag (guests_tip_add_path(guest_id: @current_guest_id)) do %>
   <table class="table-responsive">

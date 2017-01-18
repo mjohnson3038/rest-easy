@@ -62,6 +62,11 @@ gem "omniauth-google-oauth2", "~> 0.2.1"
 # For bootstrap CSS
 gem 'bootstrap-sass', '~> 3.3.6'
 
+group :production do
+ # to use postgres in production
+ gem 'pg'
+
+end
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

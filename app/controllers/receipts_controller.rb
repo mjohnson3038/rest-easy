@@ -55,6 +55,24 @@ class ReceiptsController < ApplicationController
     end
   end
 
+  def finalize
+    # potentially make this a post action to change the status of the receipt and redisplay one of the previous pages, but changes.
+
+    @receipt = params[:receipt_id]
+    @guests_per_receipt = Guest.where(receipt_id: @receipt)
+    @list_items = ListItem.where(receipt_id: @receipt)
+    # potentially move to the model.
+    @receipt_tip = 0
+    # Go through the list of guests associated with the receipt and add the tips together.
+    # @guests_per_receipt.each do |item|
+    #   byebug
+    #   @receipt_tip += item.tip
+    # end
+
+    # Go through the list of items and sum them together to get the total and tax on the receipt.
+
+  end
+
 private
   def receipt_params
     params.require(:receipt).permit(:name, :attachment, :zip_code, :status)

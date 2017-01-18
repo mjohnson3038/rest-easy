@@ -2,7 +2,7 @@
 # TODO Error handling, for EVERYTHING (phone number, etc)
 # TODO - get avalara to work
 # TODO - tip calculator - built in to say the percentage - AJAX ?? - DO NOT WANT TO HAVE TO REFReSH.
-# TODO - talk to someone about the routes - especially the AJAX routes. 
+# TODO - talk to someone about the routes - especially the AJAX routes.
 
 
 Rails.application.routes.draw do
@@ -24,6 +24,8 @@ Rails.application.routes.draw do
       resources :guest_items, only: [:index]
     end
   end
+
+  get "receipts/:receipt_id/finalize", to: "receipts#finalize", as: "finalize_receipt"
 
   # TO HANDLE AJAX of creating new guest
   post "receipts/:receipt_id/guests/", to: "guest_items#create_guest", as: "AJAX_create_guest"

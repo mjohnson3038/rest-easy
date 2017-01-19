@@ -62,15 +62,19 @@ class ReceiptsController < ApplicationController
     @guests_per_receipt = Guest.where(receipt_id: @receipt)
     @list_items = ListItem.where(receipt_id: @receipt)
     # potentially move to the model.
-    @receipt_tip = 0
+    @receipt_tip = 0.0
     # Go through the list of guests associated with the receipt and add the tips together.
-    # @guests_per_receipt.each do |item|
-    #   byebug
-    #   @receipt_tip += item.tip
-    # end
+    @guests_per_receipt.each do |person|
+      if person.tip != nil
+        @receipt_tip += person.tip
+      end
+    end
 
     # Go through the list of items and sum them together to get the total and tax on the receipt.
-
+    @total = 0
+    @list_items.each do |item|
+      @total += item.price
+    end
   end
 
 private

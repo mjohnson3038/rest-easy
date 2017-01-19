@@ -1,20 +1,121 @@
 @import url("https://fonts.googleapis.com/css?family=Waiting+for+the+Sunrise");
 @import url("https://fonts.googleapis.com/css?family=Overpass+Mono");
+@import url("https://fonts.googleapis.com/css?family=Josefin+Slab");
 
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+// GENERAL
 
+// NAV BAR
+
+.navbar {
+  background-color: #F6B540 ;
+  margin-bottom: 2%
+}
+
+.nav-text {
+  color: #415867;
+  font-family: 'Josefin Slab', serif;
+}
+
+.nav-text:hover {
+  color: #457394;
+}
+
+.labels {
+  font-family: 'Josefin Slab', serif;
+}
+
+// buttons
+
+// text buttons
+.btn-primary {
+  font-family: 'Josefin Slab', serif;
+  background-color: #457394;
+  border-color: #457394;
+}
+
+// icon button
+.btn-danger {
+  background-color: #F3722D;
+  border-color: #F3722D
+}
+
+.btn-danger:hover {
+  background-color: #F3722D;
+  border-color: #F3722D;
+  color: red;
+}
+
+.blue-button-icon {
+  text-align: center;
+  background-color: #457394;
+  color: white;
+  margin: 2%;
+}
+
+// also a button - getting rid of this gets ride of blue button icon on home page - weird.
+.receipt-icon {
+  background-color: #457394;
+  color: white
+}
+
+.button-icon {
+  padding: 3%;
+  margin: 1%
+}
+
+
+// HEADER
 
 .logo {
   font-family: 'Waiting for the Sunrise', serif;
   text-align: center;
+  color: #415867
 }
 
+// Receipt#index
 .receipt {
-  font-family: 'Overpass Mono', monospace;;
+  font-family: 'Overpass Mono', monospace;
+  background-color: white;
+  color: #3B3C36;
+  margin: 2%;
+  padding: 2%;
 }
+
+.receipt-text {
+  text-align: center;
+}
+
+.receipt-text-link {
+  font-family: 'Overpass Mono', monospace;
+  text-align: center;
+  color: #3B3C36;
+}
+
+.receipt-buttons {
+  text-align: center;
+}
+
+// ListItem#Index
+.table {
+  padding: 3%
+}
+
+
+
+
+
+
+
+// BODY
+body {
+  background-color: #DCDCDC
+}
+
+
 
 .button {
   font-family: 'Waiting for the Sunrise', serif;

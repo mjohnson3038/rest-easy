@@ -7,28 +7,27 @@
 <%= link_to "New Receipt", new_receipt_path, class: "btn btn-primary" %>
 <br />
 <br />
-<table class="table-responsive table-bordered table-striped">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Original Receipt</th>
-      <th>Delete</th>
-    </tr>
-  </thead>
-  <tbody>
+
+
+<div id="main-container" class="container">
+  <div class="row">
     <% @receipts.each do |receipt| %>
-      <tr>
-        <% if receipt.status == 1 %>
-          <td><%= link_to receipt.name, receipt_list_items_path(receipt.id) %></td>
-        <% elsif receipt.status == 2 %>
-          <td><%= link_to receipt.name, receipt_guest_guest_items_path(receipt_id: receipt.id, guest_id: Guest.where(receipt_id: receipt.id).last) %></td>
-        <% end %>
+      <div class="receipt col-xs-12 col-sm-6 col-md-3 col">
 
+        <span>
+          <% if receipt.status == 1 %>
+            <p class="receipt-text" ><%= link_to receipt.name, receipt_list_items_path(receipt.id), class: "receipt-text-link"%></p>
+          <% elsif receipt.status == 2 %>
+            <p class="receipt-text"><%= link_to receipt.name, receipt_guest_guest_items_path(receipt_id: receipt.id, guest_id: Guest.where(receipt_id: receipt.id).last), class: "receipt-text-link" %></p>
+          <% end %>
 
-        <td><div class="icon btn"><%= link_to '<i class="fa fa-download" aria-hidden="true"></i>'.html_safe, receipt.attachment_url, class: "btn"  %><div></td>
+          <p class="receipt-text"><%= receipt.created_at.strftime("%m/%d/%Y") %></p>
+        </span>
 
-        <td><div class="icon btn"><%= link_to '<i class="fa fa-trash" aria-hidden="true"></i>'.html_safe, receipt, method: :delete, class: "btn btn-danger", confirm: "Are you sure that you wish to delete #{receipt.name}?" %><div></td>
-      </tr>
+        <div class="receipt-buttons"><%= link_to '<i class="fa fa-download" aria-hidden="true"></i>'.html_safe, receipt.attachment_url, class: "btn receipt-icon button-icon"  %>
+
+        <%= link_to '<i class="fa fa-trash" aria-hidden="true"></i>'.html_safe, receipt, method: :delete, class: "btn btn-danger button-icon", confirm: "Are you sure that you wish to delete #{receipt.name}?" %></div>
+      </div>
     <% end %>
-  </tbody>
-</table>
+  </div>
+</div>

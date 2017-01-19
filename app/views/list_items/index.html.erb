@@ -5,21 +5,20 @@
 
     <div id="main-container" class="container-fluid">
       <div class="row">
-        <div class="col-md-6 col-xs-12">
-          <p><%= link_to "New List Item", new_receipt_list_item_path(receipt_id: params[:receipt_id]), class: "button btn" %></p>
-        </div>
+
         <div class="col-md-offset-9 col-xs-12">
-          <p><%= link_to "Let's Begin Splitting", receipt_guest_guest_items_path(receipt_id: params[:receipt_id], guest_id: Guest.find_by(receipt_id: params[:receipt_id]).id), class: "button btn" %></p>
+          <p><%= link_to "Let's Begin Splitting", receipt_guest_guest_items_path(receipt_id: params[:receipt_id], guest_id: Guest.find_by(receipt_id: params[:receipt_id]).id), class: "btn-primary btn" %></p>
         </div>
+
       </div>
     </div>
 
   </section>
 
-  <table class="table-responsive receipt">
+  <table class="table-responsive receipt table">
     <tr>
-      <th>Quantity</th>
-      <th>Description</th>
+      <th>Quan</th>
+      <th>Desc</th>
       <th>Price</th>
       <th>Edit</th>
       <th>Delete</th>
@@ -29,11 +28,16 @@
         <td><%= i.quantity %></td>
         <td><%= i.description %></td>
         <td><%= "%.2f" % i.price %></td>
-        <td><%= link_to '<i class="fa fa-pencil" aria-hidden="true"></i>'.html_safe, edit_receipt_list_item_path(id: i.id), class: "btn"%></td>
+        <td><%= link_to '<i class="fa fa-pencil" aria-hidden="true"></i>'.html_safe, edit_receipt_list_item_path(id: i.id), class: "btn blue-button-icon"%></td>
         <td><%= link_to '<i class="fa fa-trash" aria-hidden="true"></i>'.html_safe, receipt_list_item_path(id: i.id), method: :delete, class: "btn btn-danger"%></td>
-
       </tr>
     <% end %>
+
   </table>
+
+  <div class="col-md-6 col-xs-12">
+    <!-- TODO consider making this a modal -->
+    <p><%= link_to "Add Item", new_receipt_list_item_path(receipt_id: params[:receipt_id]), class: "receipt-text-link"%></p>
+  </div>
 
 </article>

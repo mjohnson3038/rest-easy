@@ -57,9 +57,10 @@ gem "omniauth-google-oauth2", "~> 0.2.1"
 # For Bootstrap
 # gem 'bootstrap-sass', '~> 3
 
-
 # For bootstrap CSS
 gem 'bootstrap-sass', '~> 3.3.6'
+
+
 
 
 group :production do
@@ -76,8 +77,10 @@ group :development, :test do
   # VCR
   gem 'minitest-vcr'
   gem 'webmock'
+
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
+
 end
 
 group :development do

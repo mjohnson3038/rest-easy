@@ -1,6 +1,7 @@
 # TODO be able to unclick the items people ordered.
 
 class GuestsController < ApplicationController
+
   def index
     # @params = params[:]
     @receipt = Receipt.find(params[:receipt_id])
@@ -59,6 +60,8 @@ class GuestsController < ApplicationController
   def add_tip
     puts ">>>>>>>>>>>>" + params.to_s
     current_guest = Guest.find(params[:guest_id])
+    current_guest.tip = params[:tip]
+    current_guest.save
     receipt_id = current_guest.receipt_id
     redirect_to receipt_guest_guest_items_path(receipt_id: receipt_id, guest_id: params[:guest_id])
     # TODO - add a flash message thanking the guest, and naming the total

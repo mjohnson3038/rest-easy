@@ -39,12 +39,18 @@ class GuestItemsController < ApplicationController
   end
 
   def update
-    # Id's that were checked come in an array of strings. Go through the array and update all the receipt items with the given guest's id.
+    # Id's that were checked come in an array of strings. Go through the array and update all the receipt items with the given guest's id. Additionally, needs to add the price of the item to the guests total.
+    guest = Guest.find(params[:guest_id])
+    # Unless item_total is already something, then it is 0. 
+    guest.item_total ||= 0
+
     if params[:item_ids] != nil
       params[:item_ids].each do |id|
         update = GuestItem.find(id.to_i)
         update.guest_id = params[:guest_id]
         update.save
+        guest.item_total += ListItem.find(id).price
+        guest.save
       end
     end
 

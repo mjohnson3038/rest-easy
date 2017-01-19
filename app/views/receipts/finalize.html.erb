@@ -3,3 +3,16 @@
 <p>View by Guest</p>
 
 <p>Need to figure out how to configure this page. How to best display the final results to user</p>
+
+<!-- Iterate through the guest to give their total, tip, tax, and final -->
+
+<ul>
+  <% @guests_per_receipt.each do |person| %>
+    <% if person.item_total != nil %>
+      <li><%= person.name %>: $<%= person.item_total * 1.095 + person.tip %></li>
+    <% else %>
+      <li><%= person.name %>: <%= 0 %></li>
+
+    <% end %>
+  <% end %>
+</ul>

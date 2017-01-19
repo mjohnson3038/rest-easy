@@ -1,12 +1,19 @@
 <section>
 
-  <p>All guests associated with receipt</p>
+  <h3 class="labels">Now, lets begin splitting</h3>
+
+  <div class="">
+    <h2 class="labels to-pop important">Current User: <%= @current_guest.name %></h2>
+  <div>
+
+  <p class="labels">To change the user, simply click on their name below or add a new guest if not in the list below</p>
+
   <% @receipt_guests.each do |guest| %>
-    <p><%= link_to guest.name, receipt_guest_guest_items_path(receipt_id: guest.receipt_id, guest_id: guest.id), class: "button btn" %></p>
+    <p><%= link_to guest.name, receipt_guest_guest_items_path(receipt_id: guest.receipt_id, guest_id: guest.id), class:"labels"%></p>
   <% end %>
 
   <!-- Button trigger modal -->
-  <button class="btn btn-link" data-toggle="modal" data-target="#receipt-guest-<%= @receipt_id %>-notes">
+  <button class="btn btn-primary" data-toggle="modal" data-target="#receipt-guest-<%= @receipt_id %>-notes">
     Add New Guest
   </button>
 
@@ -15,23 +22,23 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h4 class="modal-title" id="receipt-guest-<%= @receipt_id %>-label">Calculate Tip</h4>
+          <h4 class="modal-title labels" id="receipt-guest-<%= @receipt_id %>-label">Calculate Tip</h4>
         </div>
         <div class="modal-body">
-          <%= form_for @new_guest, :url => { method: :post, action: :create_guest, class:"form", remote: true } do |f|%>
+          <%= form_for @new_guest, :url => { method: :post, action: :create_guest, class:"form-horizontal", remote: true } do |f|%>
 
             <div class="form-group">
-              <%= f.label :name %>
-              <%= f.text_field :name %>
+              <%= f.label :name, class: "col-md-4 control-label labels"   %>
+              <%= f.text_field :name, class: "form-control"   %>
             </div>
 
             <div class="form-group">
-              <%= f.label :phone %>
-              <%= f.text_field :phone %>
+              <%= f.label :phone, class: "col-md-4 control-label labels"   %>
+              <%= f.text_field :phone, class: "form-control"   %>
             </div>
 
             <%= f.hidden_field :receipt_id, :value => params[:receipt_id] %>
-            <%= f.submit "Submit", class:"btn btn-primary" %>
+            <%= f.submit "Submit", class: "btn btn-primary" %>
           <% end %>
         </div>
         <div class="modal-footer">
@@ -42,18 +49,15 @@
   </div>
 
 
-
-  <p>Current User: <%= @current_guest.name %></p>
-
   <%= form_tag (update_guest_items_path(guest_id: @guest_id)) do %>
     <table class="table-responsive">
-      <tr>
+      <tr class="receipt important">
         <th>Description</th>
         <th>Price</th>
         <th>Check</th>
       </tr>
       <% @guest_items.each do |item| %>
-        <tr class="<%= 'claimed' if item.guest_id != nil %>">
+        <tr class="receipt <%= 'claimed' if item.guest_id != nil %>">
           <td><p><%= ListItem.find(item.list_item_id).description%></p></td>
           <td><%= item.price%></td>
 
@@ -74,11 +78,13 @@
     </table>
 
     <div class="actions">
-      <input type="submit" value="Submit My Orders">
+      <input type="submit" value="Submit My Orders" class= "btn btn-primary">
     </div>
 
     <% end %>
 
-    <p><%= link_to "Finalize Receipt", finalize_receipt_path(receipt_id: params[:receipt_id]), class: "button btn" %></p>
+    <p><%= link_to "Finalize Receipt", finalize_receipt_path(receipt_id: params[:receipt_id]), class: "btn btn-primary btn-important" %></p>
+
+
 
 </section>

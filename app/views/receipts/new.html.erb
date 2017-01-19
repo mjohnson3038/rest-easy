@@ -1,5 +1,10 @@
 <article>
 
+
+  <h3 class="labels">Add a New Receipt</h3>
+
+  </br>
+
   <% if !@receipt.errors.empty? %>
     <div class="alert alert-error">
       <ul>
@@ -11,14 +16,24 @@
   <% end %>
 
   <div class="well">
-    <%= form_for @receipt, html: { multipart: true } do |f| %>
-      <%= f.label :name %>
-      <%= f.text_field :name %>
-      <%= f.label :zip_code %>
-      <%= f.text_field :zip_code %>
+    <%= form_for @receipt, html: { multipart: true, class: "form-horizontal" } do |f| %>
+
+    <div class="form-group">
+      <%= f.label :name, class: "col-md-4 control-label labels"   %>
+      <%= f.text_field :name, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :zip_code, class: "col-md-4 control-label labels"   %>
+      <%= f.text_field :zip_code, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
       <!-- Find a way to change the button -->
-      <%= f.label :attachment%>
-      <%= f.file_field :attachment, class: "btn button"%>
+      <%= f.label :attachment, class: "col-md-4 control-label labels"  %>
+      <%= f.file_field :attachment, class: "form-control"%>
+    </div>
+
       <%= f.hidden_field :status, :value => 1 %>
       <%= f.submit "Save", class: "btn btn-primary button" %>
     <% end %>

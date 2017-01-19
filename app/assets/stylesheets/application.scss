@@ -24,8 +24,25 @@
   color: #457394;
 }
 
-.labels {
+.labels{
   font-family: 'Josefin Slab', serif;
+}
+
+.text {
+  font-family: 'Josefin Slab', serif;
+}
+
+.important {
+  font-weight: bold;
+}
+
+.to-pop {
+  background-color: #F3722D;
+  color: #415867;
+  padding: 2%;
+  border-color: #91C1DB;
+  border-width: 2px 10px 4px 20px;
+  border-radius: 10px
 }
 
 // buttons
@@ -35,6 +52,15 @@
   font-family: 'Josefin Slab', serif;
   background-color: #457394;
   border-color: #457394;
+  margin: 1%;
+}
+
+// for the most important text buttons
+.btn-important {
+  border-width: 4px;
+  border-color: #F3722D;
+  font-weight: bold;
+
 }
 
 // icon button
@@ -85,6 +111,16 @@
   padding: 2%;
 }
 
+table.table-responsive {
+  padding: 3px;
+  border-color: white;
+  border-width: 10px;
+}
+
+tr.receipt {
+  margin: auto;
+}
+
 .receipt-text {
   text-align: center;
 }
@@ -99,15 +135,12 @@
   text-align: center;
 }
 
+// called on buttons for form_tags - always called with the table and should look like it't included
+
 // ListItem#Index
 .table {
   padding: 3%
 }
-
-
-
-
-
 
 
 // BODY
@@ -151,5 +184,5 @@ td.input input {
 
 // For SPLITTING RECEIPT
 .claimed {
-  background-color: purple;
+  background-color: #808080;
 }

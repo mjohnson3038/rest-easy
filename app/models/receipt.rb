@@ -1,5 +1,5 @@
 # require 'rTesseract'
-
+# 
 # require 'carrierwave/orm/activerecord'
 
 class Receipt < ActiveRecord::Base

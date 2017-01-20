@@ -56,6 +56,8 @@ gem "omniauth-google-oauth2", "~> 0.2.1"
 # For bootstrap CSS
 gem 'bootstrap-sass', '~> 3.3.6'
 
+gem 'rbtrace'
+
 
 
 

@@ -31,7 +31,8 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 # To be used to upload a photo onto the site.
-gem 'carrierwave', '~> 0.9'
+# TODO
+# gem 'carrierwave', '~> 0.9'
 
 # Useful in helping to resize images in Rails
 gem 'mini_magick', '~> 4.3'
@@ -42,8 +43,9 @@ gem 'httparty'
 gem 'foundation-rails'
 
 # to turn image to text
-gem 'rtesseract'
-gem 'rmagick', '2.15.4'
+# TODO
+# gem 'rtesseract'
+# gem 'rmagick', '2.15.4'
 
 # For authentication
 gem 'omniauth'

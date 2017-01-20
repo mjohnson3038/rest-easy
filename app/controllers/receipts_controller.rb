@@ -1,5 +1,3 @@
-require 'rtesseract'
-
 class ReceiptsController < ApplicationController
 # respond_to :html, :js
 

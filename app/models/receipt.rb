@@ -1,4 +1,4 @@
-require 'rTesseract'
+# require 'rTesseract'
 
 # require 'carrierwave/orm/activerecord'
 
@@ -15,9 +15,13 @@ class Receipt < ActiveRecord::Base
 
   def process
     # Turns image into an array of text strings which.
-    file = self.attachment.file.file
-    image = RTesseract.new(file)
-    @split = image.to_s.split("\n")
+    # file = self.attachment.file.file
+
+    # TODO - removing tesseract to see if it will deploy
+    # image = RTesseract.new(file)
+
+    # @split = image.to_s.split("\n")
+    @split = ["ohhhh", "boyyy", "$2.30"]
 
     @split.each do |line|
       # # Go through each line and in each line, check that the last thing is a float, the item directly before the float OR the first item is a single integer, and then it also contains some kind of aphabetical text" If all this is true, then it is a true line item in the receipt, all other receipt lines will be ignored.

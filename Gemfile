@@ -2,6 +2,8 @@ source 'https://rubygems.org'
 
 
 ruby "2.3.1"
+
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.1'
 
@@ -42,7 +44,7 @@ gem 'httparty'
 gem 'foundation-rails'
 
 # to turn image to text
-gem 'rtesseract'
+# gem 'rtesseract'
 gem 'rmagick', '2.15.4'
 
 # For authentication

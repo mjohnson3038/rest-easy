@@ -42,7 +42,7 @@ gem 'httparty'
 gem 'foundation-rails'
 
 # to turn image to text
-# gem 'rtesseract'
+gem 'rtesseract'
 gem 'rmagick', '2.15.4'
 
 # For authentication

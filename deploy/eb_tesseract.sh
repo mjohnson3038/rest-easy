@@ -10,7 +10,7 @@ leptonica-1.69.tar.gz
 tar -zxvf leptonica-1.69.tar.gz
 cd leptonica-1.69
 ./configure
-make # Takes ~20 minutes on T1 Micro Instance machine
+make # Takes ~20 minutes on T1 Micro Instance machine 
 sudo make install
 
 # Install Tesseract

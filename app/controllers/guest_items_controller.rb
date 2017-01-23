@@ -55,9 +55,27 @@ class GuestItemsController < ApplicationController
       item.save
     end
 
-    # Iterating through the guest_items that were checked off. They are sent view an array as strings.
+    # Will get an error if nil, so this acts as a barrier for that.
     if params[:item_ids] != nil
+      # May only select uclaimed items. Needs to be checked before submitting the rest.
       params[:item_ids].each do |id|
+        check = GuestItem.find(id.to_i)
+        if check.guest_id != nil
+          # redirect_to receipt_guest_guest_items_path(receipt_id: params[receipt_id])
+          flash[:notice] = "NOTICE: You may only claim items not already claimed, to delete an item, pick a user and resubmit their order"
+          receipt = Receipt.find(guest.receipt_id)
+
+          puts "receipt_id: >>>>>>>>" + params[:receipt_id].to_s
+          redirect_to receipt_guest_guest_items_path(receipt_id: receipt.id, guest_id: params[:guest_id])
+          return
+        end
+      end
+
+
+
+      # Iterating through the guest_items that were checked off. They are sent view an array as strings
+      params[:item_ids].each do |id|
+
         # setting the guest_id on those items.
         update = GuestItem.find(id.to_i)
         update.guest_id = params[:guest_id]

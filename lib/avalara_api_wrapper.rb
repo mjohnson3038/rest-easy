@@ -11,16 +11,15 @@ class AvalaraApiWrapper
 
     data = HTTParty.get(url)
     puts "data" + data.to_s
-    # if data[totalRate]
-    #   puts "YYYESS"
-    #   tax = data[totalRate]
-    #   puts data[totalRate]
-    # else
-    #   puts "NOOOO"
-    #   puts data[totalRate]
-    #   tax = 0
-    # end
-
+    if data["totalRate"]
+      puts "YYYESS"
+      tax = data["totalRate"]
+      puts data["totalRate"]
+    else
+      puts "NOOOO"
+      puts data["totalRate"]
+      tax = 0
+    end
     # return tax
     return 0
 

@@ -1,14 +1,15 @@
 class Tax
-  attr_reader :label
+  attr_reader :zip
 
-  def initialize(label)
-    raise ArgumentError if label == nil || label == ""
-    @label = label
+  def initialize(zip)
+    raise ArgumentError if zip == nil || zip == ""
+    @zip = zip
   end
 
   def self.search(zip)
+    puts "YOU MADE IT INTO THE TAX MODELLL!!!"
 
-    return 0.9
+    return AvalaraApiWrapper.sales_tax(zip)
     # AvalaraApiWrapper.sales_tax(zip)
   end
 end

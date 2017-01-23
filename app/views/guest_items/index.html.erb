@@ -2,6 +2,10 @@
 
   <h3 class="labels">Now, lets begin splitting</h3>
 
+  <% if flash[:notice] %>
+    <div class="notice text important"><h3><%= flash[:notice] %><h3></div>
+  <% end %>
+
   <div class="">
     <h2 class="labels to-pop important">Current User: <%= @current_guest.name %></h2>
   <div>

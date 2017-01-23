@@ -20,7 +20,7 @@ class GuestItemsController < ApplicationController
     # This is only called the first time you go to guest_items#index because the status changes within the method change_to_splittable. Bug occured because no longer going through the guest#new page.
 
     @receipt = Receipt.find(@receipt_id)
-    if @receipt.status != 2
+    if @receipt.status < 2
       # Calls method to generate the guest methods and to change the status.
       @receipt.change_to_splittable()
     end
@@ -36,23 +36,40 @@ class GuestItemsController < ApplicationController
 
     # FOR THE AJAX OF ADDING A NEW USER
     @new_guest = Guest.new
+
+    # Do all items have a guest? If so then you should be able to finalize the receipt
+
   end
 
   def update
     # Id's that were checked come in an array of strings. Go through the array and update all the receipt items with the given guest's id. Additionally, needs to add the price of the item to the guests total.
     guest = Guest.find(params[:guest_id])
-    # Unless item_total is already something, then it is 0. 
-    guest.item_total ||= 0
+    # the item_total is 0 whenever this starts or else when the button is ever pressed more than once for an item it goes to that person.
+    guest.item_total = 0
 
+    # Additionally, all items with the guest_id of the person who submits, should be nil just in case they unchecked anything. Therefore, iterate through a list of guest_items with that guest_id and nil them out. Then the will get checked off again.
+
+    @guest_items = GuestItem.where(guest_id: params[:guest_id])
+    @guest_items.each do |item|
+      item.guest_id = nil
+      item.save
+    end
+
+    # Iterating through the guest_items that were checked off. They are sent view an array as strings.
     if params[:item_ids] != nil
       params[:item_ids].each do |id|
+        # setting the guest_id on those items.
         update = GuestItem.find(id.to_i)
         update.guest_id = params[:guest_id]
         update.save
-        guest.item_total += ListItem.find(id).price
+        # Adding the total of those items to the guest total.
+
+        guest.item_total = guest.item_total + ListItem.find(update.list_item_id).price
         guest.save
       end
     end
+
+
 
     puts ">>>>>>" + params.to_s
     # redirect_to root_path

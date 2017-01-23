@@ -135,6 +135,10 @@ tr.receipt {
   text-align: center;
 }
 
+.center {
+  text-align: center;
+}
+
 // called on buttons for form_tags - always called with the table and should look like it't included
 
 // ListItem#Index
@@ -154,6 +158,13 @@ body {
   font-family: 'Waiting for the Sunrise', serif;
   background-color: #337ab7;
   color: white;
+}
+
+.notice {
+  color: red;
+  background-color: white;
+  border-radius: 10px;
+  padding: 1%;
 }
 
 .table-responsive {

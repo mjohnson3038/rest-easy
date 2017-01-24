@@ -1,4 +1,4 @@
-require 'rTesseract'
+require 'rtesseract'
 
 # require 'carrierwave/orm/activerecord'
 

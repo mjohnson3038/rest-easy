@@ -40,11 +40,11 @@
     <% end %>
     <tr>
       <td>TAX</td>
-      <td><%=@tax%></td>
+      <td><%=@tax.round(2)%></td>
     </tr>
     <tr>
       <td>TOTAL</td>
-      <td><%=@total + @tax%></td>
+      <td><%=@total + @tax.round(2)%></td>
     </tr>
     <tr>
       <td><%= label_tag(:tip, "TIP:") %></td>

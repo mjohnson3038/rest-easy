@@ -21,7 +21,7 @@ class AvalaraApiWrapper
       tax = 0
     end
     # return tax
-    return 0
+    return tax
 
   end
 end

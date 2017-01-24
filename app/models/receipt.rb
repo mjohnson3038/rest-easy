@@ -1,5 +1,5 @@
 # require 'rTesseract'
- 
+
 # require 'carrierwave/orm/activerecord'
 
 class Receipt < ActiveRecord::Base
@@ -14,7 +14,12 @@ class Receipt < ActiveRecord::Base
   validates :status, presence: true, :numericality => {only_integer: true, greater_than_or_equal_to: 1, less_than_or_equal_to: 3}
 
   def process
+    # Add in tax
+    self.tax = AvalaraApiWrapper.sales_tax(self.zip_code)
+    self.save
+
     # Turns image into an array of text strings which.
+
     file = self.attachment.file.file
     image = RTesseract.new(file)
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170119020558) do
+ActiveRecord::Schema.define(version: 20170123223125) do
 
   create_table "guest_items", force: :cascade do |t|
     t.integer  "list_item_id"
@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 20170119020558) do
     t.integer  "user_id"
     t.string   "zip_code"
     t.integer  "status"
+    t.decimal  "tax"
     t.index ["user_id"], name: "index_receipts_on_user_id"
   end
 

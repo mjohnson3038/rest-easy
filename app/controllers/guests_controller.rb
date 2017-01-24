@@ -42,6 +42,7 @@ class GuestsController < ApplicationController
   def show
     @current_guest_id = params[:id]
     @guest = Guest.find(@current_guest_id)
+    receipt = Receipt.find(@guest.receipt_id)
     @guest_items = GuestItem.where(guest_id: @current_guest_id)
 
     total = 0
@@ -49,11 +50,10 @@ class GuestsController < ApplicationController
       total += item.price
     end
     @total = total
-    puts "ZIIIIPPPP COOOODEE - " + Receipt.find(@guest.receipt_id).zip_code.to_s
-    tax = AvalaraApiWrapper.sales_tax(Receipt.find(@guest.receipt_id).zip_code)
-    puts "TTATTTXXXXX" + tax.to_s
-    # tax = 9.6 * 0.01
-    @tax = total * tax
+
+    tax_rate = receipt.tax * 0.01
+
+    @tax = total * tax_rate
 
     # TODO - why isn't the total method working?
     # @min = (@current_guest.total()) * 0.15

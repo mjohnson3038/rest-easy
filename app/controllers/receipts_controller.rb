@@ -30,6 +30,7 @@ class ReceiptsController < ApplicationController
 
       # Once the receipt has been saved/registered then it should automatically also create all the list items associated with the receipt.
       @receipt.process()
+      @receipt.tax()
 
       # IF THE RECEIPT WAS SAVED, create the first guest of the receipt, ie the user
 

@@ -202,10 +202,11 @@ td.input input {
 footer {
   background-color: #F6B540 ;
   padding: 2%;
-  bottom: 0;
+  position:absolute;
+  bottom:0;
+  width:100%;
 }
 
 .credit-logo {
   height: 3rem;
-  position: relative;
 }

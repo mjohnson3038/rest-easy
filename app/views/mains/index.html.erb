@@ -2,7 +2,11 @@
 
   <h4 class="text">Welcome to <strong>RestEasy</strong>, where we split your restaurant receipt for you so you can enjoy the meal like intended </h4>
 
-  <p class="center"><%= link_to '<i class="fa fa-camera fa-5x button-icon blue-button-icon" aria-hidden="true"></i>'.html_safe, new_receipt_path, class: "btn receipt-icon button-icon center"%></p>
+
+  <span class="has-tooltip" data-toggle="tooltip" title="Click to upload a photo">
+    <p class="center"><%= link_to '<i class="fa fa-camera fa-5x button-icon blue-button-icon" aria-hidden="true"></i>'.html_safe, new_receipt_path, class: "btn receipt-icon button-icon center"%></p>
+  </span>
+
 
   <p class="text">Begin by <strong><%= link_to "uploading your receipt", new_receipt_path%></strong>, or check out <strong><%= link_to "past receipts", receipts_path%></strong> you have split with us</p>
 

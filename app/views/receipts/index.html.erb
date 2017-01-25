@@ -36,9 +36,15 @@
           <p class="receipt-text"><%= receipt.created_at.strftime("%m/%d/%Y") %></p>
         </span>
 
-        <div class="receipt-buttons"><%= link_to '<i class="fa fa-download" aria-hidden="true"></i>'.html_safe, receipt.attachment_url, class: "btn receipt-icon button-icon"  %>
+        <div class="receipt-buttons">
+          <span class="has-tooltip" data-toggle="tooltip" title="Receipt Image">
+            <%= link_to '<i class="fa fa-download" aria-hidden="true"></i>'.html_safe, receipt.attachment_url, class: "btn receipt-icon button-icon"%>
+          </span>
 
-        <%= link_to '<i class="fa fa-trash" aria-hidden="true"></i>'.html_safe, receipt, method: :delete, class: "btn btn-danger button-icon", confirm: "Are you sure that you wish to delete #{receipt.name}?" %></div>
+          <span class="has-tooltip" data-toggle="tooltip" title="Delete Receipt">
+          <%= link_to '<i class="fa fa-trash" aria-hidden="true"></i>'.html_safe, receipt, method: :delete, class: "btn btn-danger button-icon", confirm: "Are you sure that you wish to delete #{receipt.name}?" %>
+          </span>
+        </div>
       </div>
     <% end %>
   </div>

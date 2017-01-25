@@ -26,6 +26,8 @@
     <%= f.submit "Submit", class: "btn btn-primary" %>
   <% end %>
 
-
+  <div>
+    <%= link_to "Cancel", receipt_list_items_path(receipt_id: params[:receipt_id]), class: "btn btn-primary" %>
+  </div>
 
 </section>

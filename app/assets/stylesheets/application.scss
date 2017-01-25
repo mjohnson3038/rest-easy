@@ -8,6 +8,7 @@
 
 // GENERAL
 
+
 // NAV BAR
 
 .navbar {
@@ -148,9 +149,15 @@ tr.receipt {
 }
 
 
+
 // BODY
 body {
-  background-color: #DCDCDC
+  background-color: #DCDCDC;
+  font-size: 16px;
+  height: 100%;
+  min-height: 100%;
+  clear: both;
+  position: relative;
 }
 
 
@@ -177,10 +184,6 @@ body {
   border: 1px solid #ddd;
 }
 
-body {
-  font-size: 16px;
-}
-
 td.input input {
     width: 100%;
     box-sizing: border-box;
@@ -202,10 +205,30 @@ td.input input {
 footer {
   background-color: #F6B540 ;
   padding: 2%;
-  bottom:0;
+  bottom: 0;
   width:100%;
+  clear: both;
 }
 
 .credit-logo {
   height: 3rem;
+}
+
+* {
+  margin: 0;
+}
+
+html, body {
+  height: 100%;
+}
+
+.wrapper {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin: 0 auto -155px;
+}
+
+.footer, .push {
+  height: 155px;
 }

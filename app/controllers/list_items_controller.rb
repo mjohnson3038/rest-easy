@@ -38,6 +38,7 @@ class ListItemsController < ApplicationController
   end
 
   def new
+
     @new_item = ListItem.new
     @quantity = :quantity
     @description = :description

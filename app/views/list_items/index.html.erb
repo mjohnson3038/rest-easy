@@ -3,15 +3,7 @@
 
   <section>
 
-    <div id="main-container" class="container-fluid">
-      <div class="row">
-
-        <div class="col-md-offset-9 col-xs-12">
-          <p><%= link_to "Let's Begin Splitting", receipt_guest_guest_items_path(receipt_id: params[:receipt_id], guest_id: Guest.find_by(receipt_id: params[:receipt_id]).id), class: "btn-primary btn" %></p>
-        </div>
-
-      </div>
-    </div>
+    <h4 class="text">Look over the receipt to confirm all details before proceeding. Once all items have been checked over, click the button at the bottom of the page to begin splitting your receipt.</h4>
 
   </section>
 
@@ -27,7 +19,7 @@
       <tr>
         <td><%= i.quantity %></td>
         <td><%= i.description %></td>
-        <td><%= "%.2f" % i.price %></td>
+        <td class="moneyright"><%= money_format(i.price) %></td>
         <td><%= link_to '<i class="fa fa-pencil" aria-hidden="true"></i>'.html_safe, edit_receipt_list_item_path(id: i.id), class: "btn blue-button-icon"%></td>
         <td><%= link_to '<i class="fa fa-trash" aria-hidden="true"></i>'.html_safe, receipt_list_item_path(id: i.id), method: :delete, class: "btn btn-danger"%></td>
       </tr>
@@ -35,9 +27,21 @@
 
   </table>
 
-  <div class="col-md-6 col-xs-12">
-    <!-- TODO consider making this a modal -->
-    <p><%= link_to "++ Add Item", new_receipt_list_item_path(receipt_id: params[:receipt_id]), class: "receipt-text-link"%></p>
+  <div id="main-container" class="container-fluid">
+    <div class="row">
+
+      <div class="col-md-9 col-xs-12">
+        <!-- TODO consider making this a modal -->
+        <p><%= link_to "++ Add Missing Item", new_receipt_list_item_path(receipt_id: params[:receipt_id]), class: "btn btn-primary" %></p>
+      </div>
+
+      <div class="col-md-3 col-xs-12">
+        <p><%= link_to "Let's Begin Splitting", receipt_guest_guest_items_path(receipt_id: params[:receipt_id], guest_id: Guest.find_by(receipt_id: params[:receipt_id]).id), class: "btn-primary btn" %></p>
+      </div>
+
+    </div>
   </div>
+
+
 
 </article>

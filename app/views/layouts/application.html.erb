@@ -5,7 +5,7 @@
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link href="https://fonts.googleapis.com/css?family=Josefin+Slab" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Waiting+for+the+Sunrise" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Overpass+Mono" rel="stylesheet">
   <%= csrf_meta_tags %>
@@ -32,7 +32,7 @@
               <li><a href="/"><span class="nav-text"><i class="fa fa-home" aria-hidden="true"></i> Home</span></a></li>
               <li><a href="/receipts"><span class="nav-text"><i class="fa fa-list" aria-hidden="true"></i> All Receipts</span></a></li>
               <!-- TODO change the route of the information. Will be a modal -->
-              <li><a href="/receipts"><span class="nav-text"><i class="fa fa-info" aria-hidden="true"></i> Information</span></a></li>
+              <li><a href="/information"><span class="nav-text"><i class="fa fa-info" aria-hidden="true"></i> Information</span></a></li>
 
               <% if session[:user_id] == nil %>
               <li><a href="/auth/google"><span class="nav-text"><i class="fa fa-sign-in" aria-hidden="true"></i>  Login/Sign Up</span></a></li>

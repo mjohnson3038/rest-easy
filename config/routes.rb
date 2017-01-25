@@ -8,6 +8,8 @@
 Rails.application.routes.draw do
   root 'mains#index'
 
+  get "/information/", to: "mains#information", as: "information" 
+
   # OmniAuth
   get "/auth/:provider/callback" => "sessions#create"
 

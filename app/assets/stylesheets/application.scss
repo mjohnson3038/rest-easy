@@ -1,7 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Waiting+for+the+Sunrise");
 @import url("https://fonts.googleapis.com/css?family=Overpass+Mono");
-@import url("https://fonts.googleapis.com/css?family=Josefin+Slab");
-
+@import url("https://fonts.googleapis.com/css?family=Lora");
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
@@ -19,7 +18,7 @@
 
 .nav-text {
   color: #415867;
-  font-family: 'Josefin Slab', serif;
+  font-family: 'Lora', serif;
 }
 
 .nav-text:hover {
@@ -27,11 +26,12 @@
 }
 
 .labels{
-  font-family: 'Josefin Slab', serif;
+  font-family: 'Lora', serif;
 }
 
-.text {
-  font-family: 'Josefin Slab', serif;
+.text{
+  font-family: 'Lora', serif;
+  color: #415867
 }
 
 .important {
@@ -51,7 +51,7 @@
 
 // text buttons
 .btn-primary {
-  font-family: 'Josefin Slab', serif;
+  font-family: 'Lora', serif;
   background-color: #457394;
   border-color: #457394;
   margin: 1%;
@@ -104,7 +104,13 @@
   color: #415867
 }
 
+.handwritten {
+  font-family: 'Waiting for the Sunrise', serif;
+  color: #415867
+}
+
 // Receipt#index
+
 .receipt {
   font-family: 'Overpass Mono', monospace;
   background-color: white;
@@ -168,7 +174,7 @@ body {
   color: white;
 }
 
-.notice {
+.error {
   color: red;
   background-color: white;
   border-radius: 10px;
@@ -198,8 +204,10 @@ td.input input {
 }
 
 // For SPLITTING RECEIPT
-.claimed {
-  background-color: #808080;
+.alert-warning {
+  color: #8a6d3b;
+  background-color: #fcf8e3;
+  border-color: #faebcc;
 }
 
 footer {
@@ -231,4 +239,22 @@ html, body {
 
 .footer, .push {
   height: 155px;
+}
+
+.moneyright{
+  text-align: right;
+  padding-right: 2%;
+}
+
+.center{
+  text-align: center;
+}
+
+.no-bullet{
+  list-style-type: none;
+}
+
+.receipt-image {
+  width: 75vmin;
+  text-align: center;
 }

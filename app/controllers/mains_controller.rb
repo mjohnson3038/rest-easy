@@ -6,4 +6,8 @@ class MainsController < ApplicationController
   def index
     # puts RBTracer::VERSION
   end
+
+  def information
+
+  end 
 end

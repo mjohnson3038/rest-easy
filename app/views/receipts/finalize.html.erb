@@ -1,45 +1,47 @@
 
 <h3 class="text">Final Tally</h3>
 
-<p  class="text">Need to figure out how to configure this page. How to best display the final results to user</p>
+<p class="text">Cost per Person</p>
 
 <!-- Iterate through the guest to give their total, tip, tax, and final -->
 
 <table class="table-responsive receipt table">
   <tr>
     <th>Name</th>
-    <th>Total</th>
+    <th class="moneyright">Total</th>
   </tr>
   <% @guests_per_receipt.each do |person| %>
     <tr>
     <% if person.item_total != nil %>
       <td><%= person.name %>:</td>
-      <td>$<%= (person.item_total * 1.095 + person.tip).round(2) %></td>
+      <td class="moneyright"><%= money_format(person.item_total * 1.095 + person.tip) %></td>
     <% else %>
       <td><%= person.name %>:</td>
-      <td>$0</td>
+      <td class="moneyright"><%=money_format(0)%></td>
     <% end %>
     </tr>
   <% end %>
 
 </table>
 
+<p class="text">Final item total, tip, tax, and order total</p>
+
 <table class="table-responsive receipt table">
   <tr>
     <th>Item Total:</th>
-    <td><%= @total.round(2)%></td>
+    <td class="moneyright"><%= money_format(@total)%></td>
   </tr>
   <tr>
     <th>Tax:</th>
-    <td>$<%=@tax.round(2)%></td>
+    <td class="moneyright"><%=money_format(@tax)%></td>
   </tr>
   <tr>
     <th>Tip:</th>
-    <td>$<%= @receipt_tip.round(2)%></td>
+    <td class="moneyright"><%= money_format(@receipt_tip)%></td>
   </tr>
   <tr>
     <th>Final</th>
-    <td>$<%= @final.round(2) %></td>
+    <td class="moneyright"><%= money_format(@final) %></td>
   </tr>
 
 </table>

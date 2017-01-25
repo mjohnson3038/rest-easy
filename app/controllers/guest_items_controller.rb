@@ -62,7 +62,7 @@ class GuestItemsController < ApplicationController
         check = GuestItem.find(id.to_i)
         if check.guest_id != nil
           # redirect_to receipt_guest_guest_items_path(receipt_id: params[receipt_id])
-          flash[:notice] = "NOTICE: You may only claim items not already claimed, to delete an item, pick a user and resubmit their order"
+          flash[:error] = "NOTICE: You may only claim items not already claimed, to delete an item, pick a user and resubmit their order"
           receipt = Receipt.find(guest.receipt_id)
 
           puts "receipt_id: >>>>>>>>" + params[:receipt_id].to_s

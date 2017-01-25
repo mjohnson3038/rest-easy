@@ -2,6 +2,10 @@
 
   <h3 class="labels">Now, lets begin splitting</h3>
 
+  <% if !flash[:error].blank? %>
+    <div class="alert alert-info"><%= flash[:error] %></div>
+  <% end %>
+
   <% if flash[:notice] %>
     <div class="notice text important"><h3><%= flash[:notice] %><h3></div>
   <% end %>
@@ -57,21 +61,21 @@
     <table class="table-responsive">
       <tr class="receipt important">
         <th>Description</th>
-        <th>Price</th>
-        <th>Check</th>
+        <th class="moneyright">Price</th>
+        <th class="moneyright">Check</th>
       </tr>
       <% @guest_items.each do |item| %>
-        <tr class="receipt <%= 'claimed' if item.guest_id != nil %>">
+        <tr class="receipt <%= 'alert alert-warning' if item.guest_id == nil %>">
           <td><p><%= ListItem.find(item.list_item_id).description%></p></td>
-          <td><%= item.price%></td>
+          <td class="moneyright"><%= money_format(item.price)%></td>
 
           <!-- The checkbox should be prechecked it the guest_id id == guest.id -->
 
           <% if item.guest_id != @current_guest.id %>
-            <td><%= check_box_tag 'item_ids[]', item.id %></td>
+            <td  class="center"><%= check_box_tag 'item_ids[]', item.id %></td>
             <%= h item.guest_id -%>
           <% else %>
-            <td><%= check_box_tag 'item_ids[]', item.id, true %></td>
+            <td  class="center"><%= check_box_tag 'item_ids[]', item.id, true %></td>
             <%= h item.guest_id -%>
           <% end %>
 

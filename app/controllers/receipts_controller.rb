@@ -46,10 +46,10 @@ class ReceiptsController < ApplicationController
 
   def destroy
     if @user.id == nil
-      flash[:notice] = "You need to log in to edit this."
+      flash[:error] = "You need to log in to edit this."
       redirect_to root_path
     elsif @user.id != Receipt.find(params[:id]).user_id
-      flash[:notice] = "This is not your receipt, you can't delete it"
+      flash[:error] = "This is not your receipt, you can't delete it"
       redirect_to root_path
     elsif @user.id == Receipt.find(params[:id]).user_id
       @receipt = Receipt.find(params[:id])
@@ -120,7 +120,7 @@ private
   def check_items(guest_items)
     guest_items.each do |item|
       if item.guest_id == nil
-        flash[:notice] = "NOTICE: All items must be selected before finalizing the receipt"
+        flash[:error] = "NOTICE: All items must be selected before finalizing the receipt"
         return false
       end
     end

@@ -35,6 +35,8 @@ class ReceiptsController < ApplicationController
       # IF THE RECEIPT WAS SAVED, create the first guest of the receipt, ie the user
 
       Guest.create!(name: @user.name, receipt_id: @receipt.id)
+      puts "THE RECEIPT GUEST HAS BEEN CREAATED!!! HOPEFULLY"
+      puts Guest.find_by(receipt_id: @receipt.id)
 
       redirect_to receipt_list_items_path(receipt_id: @receipt.id), notice: "The receipt has been uploaded"
     else

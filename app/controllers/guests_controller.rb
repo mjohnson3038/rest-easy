@@ -7,7 +7,7 @@ class GuestsController < ApplicationController
     @receipt = Receipt.find(params[:receipt_id])
     @guests_per_receipt = Guest.where(receipt_id: @receipt.id)
   end
-
+  
   def new
 
     @receipt = Receipt.find(params[:receipt_id])

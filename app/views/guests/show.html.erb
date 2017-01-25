@@ -1,14 +1,14 @@
-<h4>Add Tip</h4>
+<h4 class="text">Add Tip</h4>
 
-<h5>Receipt Summary</h5>
+<h5 class="text">Receipt Summary</h5>
 
 <!-- Button trigger modal -->
-<button class="btn btn-link" data-toggle="modal" data-target="#todo-<%= @current_guest_id %>-notes">
+<!-- <button class="btn btn-link" data-toggle="modal" data-target="#todo-<%= @current_guest_id %>-notes">
   Calculate Tip
-</button>
+</button> -->
 
 <!-- Modal -->
-<div class="modal fade" id="todo-<%= @current_guest_id %>-notes" tabindex="-1" role="dialog" aria-labelledby="todo-<%= @current_guest_id %>-label" aria-hidden="true">
+<!-- <div class="modal fade" id="todo-<%= @current_guest_id %>-notes" tabindex="-1" role="dialog" aria-labelledby="todo-<%= @current_guest_id %>-label" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -17,17 +17,17 @@
       <div class="modal-body">
         Meal total: <%=@total + @tax%>
         <!-- TODO - is there a way to provide a range tag with the number and the javascrip -->
-      </div>
+      <!-- </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
-</div>
+</div> -->
 
 
 <%= form_tag (guests_tip_add_path(guest_id: @current_guest_id)) do %>
-  <table class="table-responsive">
+  <table class="table-responsive receipt">
     <tr>
       <th>Description</th>
       <th>Price</th>
@@ -52,5 +52,5 @@
     </tr>
   </table>
 
-  <%= submit_tag("Submit") %>
+  <%= submit_tag("Submit", class:"btn btn-primary")%>
 <% end %>

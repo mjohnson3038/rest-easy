@@ -14,7 +14,7 @@
     <h2 class="labels to-pop important">Current User: <%= @current_guest.name %></h2>
   <div>
 
-  <p class="labels">To change the user, simply click on their name below or add a new guest if not in the list below</p>
+  <p class="labels">To change the user, simply click on their name below or add a new guest if not in the list below. Unclaimed items are marked in yellow. Once all items are claimed, the receipt will be completely white. All items must be claimed before finalizing the receipt.</p>
 
   <% @receipt_guests.each do |guest| %>
     <p><%= link_to guest.name, receipt_guest_guest_items_path(receipt_id: guest.receipt_id, guest_id: guest.id), class:"labels"%></p>
@@ -57,7 +57,7 @@
   </div>
 
 
-  <%= form_tag (update_guest_items_path(guest_id: @guest_id)) do %>
+  <%= form_tag (update_guest_items_path(guest_id: @guest_id)), :class => 'remove-guest-number' do %>
     <table class="table-responsive">
       <tr class="receipt important">
         <th>Description</th>

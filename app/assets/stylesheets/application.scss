@@ -210,6 +210,18 @@ td.input input {
   border-color: #faebcc;
 }
 
+
+// SAME AS .alert-info
+.notice {
+  color: #31708f;
+  background-color: #d9edf7;
+  border-color: #bce8f1;
+  padding: 2%;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+}
+
 footer {
   background-color: #F6B540 ;
   padding: 2%;
@@ -257,4 +269,8 @@ html, body {
 .receipt-image {
   width: 75vmin;
   text-align: center;
+}
+
+.remove-guest-number {
+  color: #DCDCDC
 }

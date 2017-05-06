@@ -14,7 +14,7 @@
     <h2 class="labels to-pop important">Current User: <%= @current_guest.name %></h2>
   <div>
 
-  <p class="labels">To change the user, simply click on their name below or add a new guest if not in the list below. Unclaimed items are marked in yellow. Once all items are claimed, the receipt will be completely white. All items must be claimed before finalizing the receipt.</p>
+  <p class="labels">To change the user, simply click on their name below or add a new guest if not in the list below. Unclaimed items are marked in yellow. Once all items are claimed, the receipt will be completely white. All items must be claimed before finalizing the receipt.ra</p>
 
   <% @receipt_guests.each do |guest| %>
     <p><%= link_to guest.name, receipt_guest_guest_items_path(receipt_id: guest.receipt_id, guest_id: guest.id), class:"labels"%></p>
@@ -30,7 +30,7 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h4 class="modal-title labels" id="receipt-guest-<%= @receipt_id %>-label">Calculate Tip</h4>
+          <h4 class="modal-title labels" id="receipt-guest-<%= @receipt_id %>-label">Add Guest</h4>
         </div>
         <div class="modal-body">
           <%= form_for @new_guest, :url => { method: :post, action: :create_guest, class:"form-horizontal", remote: true } do |f|%>

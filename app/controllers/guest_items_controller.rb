@@ -1,5 +1,3 @@
-# TODO - complete button, changes receipt status to 3 - changes page to one with all the final tallies per person - probably should be in the guest controller.
-
 class GuestItemsController < ApplicationController
   def create
     puts ">>>>>>>>> BEING CREATED GUEST ITEM!!!!!!!!!!"
